@@ -910,3 +910,89 @@ h2.contact-title.bubble .reg{color:var(--ink);-webkit-text-fill-color:var(--ink)
 .credits-cover.scrapbook:hover .scrap{transform:rotate(0)}
 @media(max-width:760px){.credits-cover.scrapbook{min-height:300px}}
 h1.bubble .reg{display:none}
+
+
+/* ═══════════════ v49 — POPEYE COVER + SPREADS ═══════════════
+   핫핑크 버블 로고, 사진 꽉 찬 표지, 세로 제목, 콜라주 펼침면 */
+:root{--pink:#ee3a7c;--pink2:#b81f58;--sky:#5fc3e6;--paper:#f7f3ea}
+/* 표지: 사진 꽉 채움 */
+.hero.cover--photo{position:relative;min-height:100svh;padding:0;background:#dfe9ef;overflow:hidden;border-bottom:2px solid var(--ink)}
+.cover-photo{position:absolute;inset:0;z-index:0}
+.cover-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:none!important}
+.cover-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),transparent 30%,transparent 70%,rgba(0,0,0,.18))}
+.cover-in{position:relative;z-index:2;display:grid;grid-template-columns:1fr auto;grid-template-areas:'strap strap' 'logo logo' 'vert info' 'vert big' 'act act';min-height:100svh;padding-top:70px;padding-bottom:0;align-content:start;row-gap:0}
+.cover--photo .cover-strap{grid-area:strap;color:#fff;border:0;padding:0;margin:0 0 4px;text-shadow:0 1px 2px rgba(0,0,0,.35);font-weight:700}
+.cover--photo .cover-strap b{color:var(--yellow)}
+.cover--photo h1.bubble{grid-area:logo;color:var(--pink);-webkit-text-fill-color:var(--pink);filter:drop-shadow(.03em .05em 0 var(--pink2)) drop-shadow(0 .02em .08em rgba(0,0,0,.25));font-size:clamp(96px,19vw,330px);line-height:.82;margin:0 0 10px;letter-spacing:-.01em}
+.cover--photo h1.bubble span{margin-left:.14em}
+.cover--photo .cover-info{grid-area:info;justify-self:end;text-align:right;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);gap:8px;margin-top:4px}
+.cover--photo .cover-mag{color:#fff;font-size:clamp(20px,2vw,30px)}
+.cover--photo .cover-spec div{border-color:rgba(255,255,255,.9);grid-template-columns:1fr;justify-items:end;padding:3px 0}
+.cover--photo .cover-spec dt{display:none}
+.cover--photo .cover-spec dd{color:#fff;font-size:18px;text-align:right}
+.cover-vert{grid-area:vert;margin:clamp(20px,5vh,60px) 0 0;writing-mode:vertical-rl;text-orientation:mixed;font:400 clamp(44px,6.4vw,112px)/1.05 var(--krd);letter-spacing:.02em;display:flex;gap:.1em;align-self:start}
+.cover-vert span{display:block;filter:drop-shadow(.02em .03em 0 rgba(0,0,0,.35))}
+.cover-vert .c1{color:var(--sky)}.cover-vert .c2{color:#fff}.cover-vert .c3{color:var(--sky)}
+.cover--photo .cover-big{grid-area:big;justify-self:end;align-self:end;color:#fff;font-family:var(--bub);font-size:clamp(90px,12vw,200px);filter:drop-shadow(.02em .04em 0 rgba(0,0,0,.4));line-height:.8;margin-bottom:8px}
+.cover--photo .hero-actions{grid-area:act;display:flex;gap:8px;padding:14px 0 22px}
+.cover--photo .btn{background:#fff;color:var(--ink);border-color:#fff;font-size:13px}
+.cover--photo .btn--dark{background:var(--pink);color:#fff;border-color:var(--pink)}
+.cover--photo .btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.cover--photo>.wrap:last-child{position:relative;z-index:2;background:var(--paper);max-width:none}
+/* 목차 스크랩북 섹션 */
+.toc-spread{padding:clamp(40px,6vh,80px) 0 0}
+.spread-head{display:flex;align-items:baseline;gap:18px;border-top:2px solid var(--ink);padding-top:14px;margin-bottom:18px}
+.spread-head .dotlabel{color:var(--pink)}
+.spread-head h2{margin:0;font:400 clamp(26px,3vw,40px)/1 var(--krd)}
+.spread-head h2 em{font:400 .9em var(--bub);font-style:normal;color:var(--pink)}
+.toc-spread .scrapbook{min-height:clamp(420px,44vw,600px)}
+/* 핑크 포인트로 통일 */
+.bar-logo{color:var(--pink);filter:drop-shadow(.03em .05em 0 var(--pink2))}
+.bar-nav a:hover,.bar-nav a[aria-current]{color:var(--pink)}.bar-nav a::after{background:var(--pink)}.bar-progress i{background:var(--pink)}
+.sec-no{background:var(--pink)}.sec-head h2 em{color:var(--pink)}
+.hero-stats span,.stats span,.cr-stats span{color:var(--pink)}
+.cat{--c:var(--pink);--c2:#ffd1e2}
+#cat-character{--c:var(--orange);--c2:var(--cream)}
+#cat-interactive{--c:var(--sky);--c2:#e4f5fb}
+#cat-ai{--c:var(--green);--c2:#dff1e3}
+.contact-eyebrow{color:var(--pink)}
+h2.contact-title.bubble{color:var(--pink);-webkit-text-fill-color:var(--pink);filter:drop-shadow(.025em .045em 0 var(--pink2))}
+h2.contact-title.bubble span{color:var(--sky);-webkit-text-fill-color:var(--sky)}
+.contact-link:hover{background:var(--pink);border-color:var(--pink)}
+.cc-word{color:var(--pink)!important;-webkit-text-fill-color:var(--pink)!important}
+.cc-word--i{color:var(--sky)!important;-webkit-text-fill-color:var(--sky)!important}
+.cc-stamp{color:var(--pink)}.cc-stamp b+b{color:var(--sky)}
+.credits-copy .btn{background:var(--pink)}
+.insight{border-left-color:var(--c)}
+/* 콜라주 펼침면 (뽀빠이 내지) */
+.collage{border:0;padding:0;background:transparent}
+.collage .gallery-label{display:block;margin-bottom:10px}
+.collage-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:minmax(60px,auto);gap:14px 12px;align-items:start}
+.clip{position:relative;display:block;background:#fff;padding:5px 5px 18px;border:1px solid rgba(0,0,0,.22);box-shadow:0 10px 22px -14px rgba(0,0,0,.5);transform:rotate(var(--r,0));transition:transform .4s var(--ease),box-shadow .4s var(--ease);width:auto!important;height:auto!important;aspect-ratio:auto!important;border-radius:0;overflow:visible!important;text-align:left}
+.clip img{display:block;width:100%!important;height:auto!important;object-fit:initial!important;filter:none!important;transform:none!important;border-radius:0}
+.clip b{position:absolute;left:7px;bottom:3px;font:600 9.5px var(--disp);letter-spacing:.14em;color:var(--ink)}
+.clip:hover{transform:rotate(0) scale(1.04);z-index:5;box-shadow:0 20px 34px -16px rgba(0,0,0,.55)}
+.clip--a{grid-column:span 5;--r:-1.6deg}
+.clip--b{grid-column:span 3;--r:2.2deg;margin-top:34px}
+.clip--c{grid-column:span 4;--r:-.8deg}
+.clip--d{grid-column:span 3;--r:1.4deg;margin-top:-18px}
+.clip--e{grid-column:span 4;--r:-2.4deg;margin-top:22px}
+.clip--f{grid-column:span 5;--r:1deg;margin-top:-10px}
+.clip--g{grid-column:span 3;--r:-1.2deg;margin-top:28px}
+.clip--h{grid-column:span 4;--r:2.6deg}
+.collage--sheet .collage-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.collage--sheet .clip{grid-column:span 1;margin-top:0}
+/* 캡션 롤: 뽀빠이식 스펙 리스트 */
+.facts{border:0;background:transparent;border-top:2px solid var(--ink);border-radius:0}
+.facts>div{border-bottom:1px dotted rgba(0,0,0,.35)}
+.facts dt{color:var(--pink)}
+.proj-desc{border:0;border-top:2px solid var(--ink);border-radius:0;background:transparent;padding-left:0;padding-right:0}
+.proj-hero{border:0;border-radius:0}
+.proj-hero img{filter:none!important}
+.proj-title em{color:var(--pink)}
+.proj-sub::before{color:var(--pink)}
+@media(max-width:900px){.cover-in{grid-template-columns:1fr;grid-template-areas:'strap' 'logo' 'info' 'vert' 'big' 'act'}.cover--photo .cover-info{justify-self:start;text-align:left}.cover--photo .cover-spec div{justify-items:start}.cover--photo .cover-spec dd{text-align:left}.cover-vert{writing-mode:horizontal-tb;font-size:clamp(34px,9vw,56px);display:block;margin-top:12px}.cover-vert span{display:inline}.cover--photo .cover-big{justify-self:start}.collage-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.clip{margin-top:0!important}.clip--a,.clip--f{grid-column:span 4}.clip--b,.clip--d,.clip--g{grid-column:span 2}.clip--c,.clip--e,.clip--h{grid-column:span 3}}
+.cover-vert{justify-self:start;margin-left:2%}
+.cover-in{grid-template-columns:auto 1fr}
+.cover--photo .cover-info,.cover--photo .cover-big{grid-column:2}
+.cover-vert{grid-column:1;grid-row:3/5}

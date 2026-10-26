@@ -403,3 +403,14 @@ h1.cr-title.bubble .reg{color:var(--ink);-webkit-text-fill-color:var(--ink);filt
 .cue-onair{color:var(--c)}
 h1.cr-title.bubble .reg{font-family:var(--disp)!important;font-weight:700!important}
 h1.cr-title.bubble .reg{display:none}
+
+/* v49 — 핑크 */
+:root{--pink:#ee3a7c;--pink2:#b81f58;--sky:#5fc3e6}
+.cr-bar-title strong{color:var(--pink);filter:drop-shadow(.03em .05em 0 var(--pink2))}
+.cr-bar-nav a:hover,.cr-bar-nav a[aria-current]{color:var(--pink)}.cr-bar-nav a::after{background:var(--pink)}.cr-bar-progress i,.cr-bar-progress{background:var(--pink)}
+.cr-strap b,.cr-eyebrow,.cr-stats span{color:var(--pink)}
+h1.cr-title.bubble{color:var(--pink);-webkit-text-fill-color:var(--pink);filter:drop-shadow(.025em .045em 0 var(--pink2))}
+h1.cr-title.bubble span{color:var(--sky);-webkit-text-fill-color:var(--sky)}
+.cr-section{--c:var(--pink);--c2:#ffd1e2}
+#drama{--c:var(--orange)}
+#stage{--c:var(--sky)}

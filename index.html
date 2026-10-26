@@ -32,31 +32,32 @@
 
 <main>
   <!-- ───── HERO ───── -->
-  <section class="hero cover" id="home">
-    <div class="wrap">
+  <section class="hero cover cover--photo" id="home">
+    <div class="cover-photo" aria-hidden="true"><img src="assets/cover/cover.jpg" alt="" onerror="this.src='assets/projects/covers/puddingberry.png';this.onerror=null"></div>
+    <div class="wrap cover-in">
       <p class="cover-strap">보이는 것과 작동하는 것을 같이 만드는 사람. 스타일리스트 출신 비주얼 디렉터의 포트폴리오 — 이번 호는 <b>10개의 작업</b>을 담았습니다.</p>
-      <h1 class="bubble" aria-label="SOY KIM">SOY<span>KIM</span><i class="reg">®</i></h1>
-      <div class="cover-grid">
-        <aside class="cover-body">
-          <p>드라마 의상팀에서 시작해 매거진·무대·캠페인 현장을 지나, 지금은 캐릭터 IP, 역사 콘텐츠, AI 서비스까지 기획합니다. 현장에서 배운 건 옷이 아니라 "한 프레임 안에서 무엇이 먼저 읽히는가"였고, 그 질문을 화면과 서비스에 그대로 가져왔습니다. 이 포트폴리오는 그 질문에 답한 열 가지 기록입니다.</p>
-        </aside>
-        <div class="cover-items scrapbook" id="coverItems" aria-label="이번 호 아이템"></div>
-        <aside class="cover-info">
-          <p class="cover-mag">Magazine for<br>Visual Direction</p>
-          <dl class="cover-spec"><div><dt>Issue</dt><dd>01</dd></div><div><dt>Feature</dt><dd>PORTFOLIO</dd></div><div><dt>City</dt><dd>SEOUL</dd></div><div><dt>Items</dt><dd>10</dd></div></dl>
-          <div class="hero-actions">
-            <a href="#projects" class="btn btn--dark">작업 보기 ↓</a>
-            <a href="credits.html" class="btn">Selected Credits ↗</a>
-          </div>
-        </aside>
-      </div>
-      <div class="cover-foot">
-        <span class="cover-big">10</span>
-        <h2 class="cover-head"><span class="kr">보이는 것과 작동하는 것을, 같이.</span><span class="en">Portfolio Issue</span></h2>
+      <h1 class="bubble" aria-label="SOY KIM">SOY<span>KIM</span></h1>
+      <aside class="cover-info">
+        <p class="cover-mag">Magazine for<br>Visual Direction</p>
+        <dl class="cover-spec"><div><dt>Issue</dt><dd>01</dd></div><div><dt>Feature</dt><dd>PORTFOLIO</dd></div><div><dt>City</dt><dd>SEOUL</dd></div></dl>
+      </aside>
+      <h2 class="cover-vert" aria-label="보이는 것과 작동하는 것을, 같이."><span class="c1">보이는 것과</span><span class="c2">작동하는 것을,</span><span class="c3">같이.</span></h2>
+      <span class="cover-big">10</span>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn--dark">작업 보기 ↓</a>
+        <a href="credits.html" class="btn">Selected Credits ↗</a>
       </div>
     </div>
     <div class="wrap">
       <ul class="hero-stats" id="heroStats" aria-label="포트폴리오 요약"></ul>
+    </div>
+  </section>
+
+  <!-- 표지 아래 스크랩북 (이번 호 아이템) -->
+  <section class="toc-spread">
+    <div class="wrap">
+      <header class="spread-head"><span class="dotlabel">In this issue</span><h2><span class="kr">이번 호에 실린 것들</span> <em>Contents</em></h2></header>
+      <div class="cover-items scrapbook" id="coverItems" aria-label="이번 호 아이템"></div>
     </div>
   </section>
 

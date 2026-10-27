@@ -1242,3 +1242,9 @@ h2.contact-title.bubble .reg{color:var(--ink)}
 .cover-photo img{object-position:50% 35%}
 .cover--photo h1.bubble.is-gloss .gloss-svg{width:min(100%,1180px);max-width:100%}
 .cover--photo h1.bubble{font-size:clamp(80px,13.5vw,235px)}
+/* 표지: 벤치 단체샷(4:5) — 하늘 위, 캐릭터는 아래 */
+.cover-photo{aspect-ratio:16/10;max-height:92svh}
+.cover-photo img{object-position:50% 62%}
+.cover-line .c1{color:#fff}.cover-line .c2{color:var(--yellow)}
+@media(max-width:900px){.cover-photo img{object-position:50% 70%}}
+@media(max-width:900px){.cover-in{min-height:168vw}.cover-photo img{object-position:50% 55%}}

@@ -473,3 +473,9 @@ h1.cr-title.bubble span{-webkit-text-fill-color:transparent;background:linear-gr
 .cue-col-text{grid-area:text!important;position:static!important;top:auto!important}
 .cue-col-media{grid-area:media!important}
 @media(max-width:900px){.cue{grid-template-columns:1fr!important;grid-template-areas:'no' 'text' 'media'!important;grid-template-rows:auto!important}}
+
+/* v54 — 풍선 광택 */
+h1.cr-title.bubble{-webkit-text-fill-color:currentColor!important;background:none!important;color:var(--pink);filter:url(#balloon) drop-shadow(.025em .045em 0 var(--pink2))}
+h1.cr-title.bubble span{-webkit-text-fill-color:var(--sky)!important;background:none!important;color:var(--sky)}
+.cr-bar-title strong{-webkit-text-fill-color:var(--pink)!important;background:none!important;filter:url(#balloon) drop-shadow(.04em .06em 0 var(--pink2))}
+.cr-person-no{filter:url(#balloon)}

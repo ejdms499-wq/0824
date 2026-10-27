@@ -67,7 +67,10 @@ const heroStatsEl=document.getElementById('heroStats');heroStatsEl.innerHTML=[[S
        ['assets/projects/styling/oliveyoung/oy_lead.jpg','Olive Young Magazine','브랜드 화보','Editorial',['Knit / 레드 · 블루','Pants / 그레이 · 브라운','Chair / 오렌지']],
        ['assets/projects/styling/editorial/ha_vogue_lead.jpg','VOGUE','하정우','Editorial',['Shirt / 화이트','Jacket / 블랙','Mood / 클래식']],
        ['assets/projects/styling/koo_bb_lead.jpg','Brooks Brothers','구교환','Campaign',['Jacket / 네이비 블레이저','Shirt / 핑크 옥스퍼드','Tie / 레지멘탈']],
-       ['assets/projects/styling/editorial/shin_bazaar_lead.jpg',"Harper's BAZAAR",'신승호','Editorial',['Tee / 블랙','Pants / 블랙','Mood / 모노크롬']]
+       ['assets/projects/styling/editorial/shin_bazaar_lead.jpg',"Harper's BAZAAR",'신승호','Editorial',['Tee / 블랙','Pants / 블랙','Mood / 모노크롬']],
+       ['assets/projects/styling/andteam/stage1_lead.jpg','&TEAM · Bewitched','Stage 1','Music show',['Vest / 브라운 스웨이드','Knit / 네이비 베스트','Scarf / 옐로']],
+       ['assets/projects/styling/andteam/clip_lead.jpg','&TEAM · Bewitched','Live clip','Live clip',['Knit / 올블랙','Hardware / 실버','Mood / 크롬하츠']],
+       ['assets/projects/styling/andteam/stage2_lead.jpg','&TEAM · Bewitched','Stage 2','Music show',['Look / 스테이지 2','Mood / 라이브','Team / 의상 준비 참여']]
       ].map(([src,pub,who,kind,look],i)=>`<a class="lb-item" href="credits.html"><span class="lb-pic"><img src="${src}" alt="" loading="lazy"><b>${String(i+1).padStart(2,'0')}</b></span><span class="lb-meta"><strong>${enc(who)}</strong><em>${enc(pub)} · ${enc(kind)}</em></span><ul class="lb-look">${look.map(l=>{const [k,v]=l.split(' / ');return `<li><span>${enc(k)}</span><i></i><span>${enc(v)}</span></li>`}).join('')}</ul></a>`).join('')}
      </div>
      <div class="credits-copy">

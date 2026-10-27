@@ -1150,3 +1150,57 @@ h2.contact-title.bubble .reg{-webkit-text-fill-color:var(--ink);background:none}
 .lb-look li i{flex:1;border-bottom:1px dotted rgba(0,0,0,.3);transform:translateY(-3px)}
 .lb-look li span:last-child{white-space:nowrap}
 @media(max-width:900px){.credits-grid .lookbook{grid-template-columns:repeat(2,minmax(0,1fr))}.credits-grid .credits-copy{grid-template-columns:1fr}.credits-grid .credits-copy>*{grid-column:auto!important;grid-row:auto!important}}
+
+
+/* ═══ v54 — 진짜 풍선 광택: 흰 하이라이트 블롭 (SVG 스페큘러) ═══ */
+h1.bubble,h2.contact-title.bubble,.cc-word,.cc-word--i{-webkit-text-fill-color:currentColor!important;background:none!important;-webkit-background-clip:initial!important;filter:url(#balloon) drop-shadow(.025em .045em 0 var(--pink2))}
+h1.bubble{color:var(--pink)}
+h1.bubble::before{display:none}
+h2.contact-title.bubble{color:var(--pink)}
+h2.contact-title.bubble span{color:var(--sky);-webkit-text-fill-color:var(--sky)!important;background:none!important;filter:none}
+h2.contact-title.bubble .reg{color:var(--ink);-webkit-text-fill-color:var(--ink)!important}
+.bar-logo{-webkit-text-fill-color:var(--pink)!important;background:none!important;filter:url(#balloon) drop-shadow(.04em .06em 0 var(--pink2))}
+.cat-band .cat-no{filter:url(#balloon) drop-shadow(.02em .04em 0 var(--ink))}
+.cover-big{filter:url(#balloon) drop-shadow(.02em .04em 0 rgba(0,0,0,.5))}
+.sec-head h2 em,.spread-head h2 em{filter:url(#balloon) drop-shadow(.03em .05em 0 var(--pink2))}
+/* 표지: 나무늘보 — 로고는 하늘에, 제목은 아래 잔디 위 */
+.cover-photo img{object-position:50% 100%}
+.cover--photo .cover-strap{background:rgba(255,255,255,.72);color:var(--ink);text-shadow:none}
+.cover--photo .cover-strap b{color:var(--pink)}
+.cover--photo .cover-info{background:none;padding:0;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.cover--photo .cover-spec div{border-color:rgba(255,255,255,.95)}
+.cover-line{-webkit-text-stroke:0;color:#fff;filter:drop-shadow(0 .035em 0 rgba(0,0,0,.55)) drop-shadow(0 2px 10px rgba(0,0,0,.3))}
+.cover-line .c1,.cover-line .c2{color:#fff}
+.cover-line .c2{color:var(--yellow)}
+/* 표지: 4:5 사진을 세로로 다 보이게 — 하늘(위) 유지 */
+.hero.cover--photo{min-height:auto;height:auto}
+.cover-photo{position:relative;inset:auto;aspect-ratio:16/10;max-height:92svh}
+.cover-photo img{object-position:50% 0%}
+.cover-in{position:absolute;inset:0;min-height:0;padding-top:64px;z-index:2}
+.cover--photo>.wrap:last-child{position:relative}
+.cover--photo .cover-strap{margin-bottom:0}
+.cover--photo h1.bubble{font-size:clamp(90px,15.5vw,270px)}
+.cover-line{font-size:clamp(34px,4.6vw,76px)}
+.cover-line .c1{color:#fff}.cover-line .c2{color:var(--yellow)}
+@media(max-width:900px){.cover-photo{aspect-ratio:4/5;max-height:none}.cover-in{padding-top:60px}}
+.cover-photo{width:100%;aspect-ratio:16/10;max-height:92svh;overflow:hidden;background:#cfdde6}
+.cover-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 8%}
+.cover-in{row-gap:0}
+.cover--photo .cover-spec div{border-bottom:1.5px solid rgba(255,255,255,.95);grid-template-columns:1fr}
+.cover--photo .cover-info{justify-self:end;width:max-content}
+.cover-line{grid-row:3/5;align-self:end}
+.cover--photo .hero-actions{padding:10px 0 20px}
+@media(max-width:900px){.cover-in{grid-template-areas:'strap' 'logo' 'info' 'vert' 'act';grid-template-rows:auto auto auto 1fr auto}.cover--photo .cover-info{justify-self:start;width:auto;margin-top:6px}.cover--photo .cover-spec{display:flex;gap:14px}.cover--photo .cover-spec div{border:0;padding:0}.cover--photo .cover-spec dd{font-size:13px}.cover-line{grid-row:auto;align-self:end;margin-bottom:6px}.cover--photo .cover-big{display:none}}
+.cover-in,.cover-in>*{border:0!important}
+.cover--photo .hero-actions{border:0!important;box-shadow:none}
+.cover--photo .cover-spec div{border-bottom:1.5px solid rgba(255,255,255,.95)!important}
+@media(max-width:900px){.hero.cover--photo{display:block}.cover-photo{position:relative;aspect-ratio:4/5;max-height:none}.cover-in{position:absolute;inset:0;display:grid;grid-template-rows:auto auto auto 1fr auto;padding:60px 16px 16px}.cover--photo .cover-strap{font-size:12px;padding:6px 8px}.cover--photo h1.bubble{font-size:clamp(64px,21vw,110px);line-height:.85}.cover-line{font-size:clamp(26px,7.5vw,40px)}}
+@media(max-width:900px){.cover-photo{aspect-ratio:auto;height:150vw;max-height:none}.cover-photo img{object-position:50% 20%}.cover-in{grid-template-rows:auto auto auto 1fr auto auto;grid-template-areas:'strap' 'logo' 'info' 'vert' 'act' 'x'}.cover--photo .hero-actions{display:flex!important;padding:8px 0 4px}}
+@media(max-width:900px){.cover-photo{height:165vw!important;max-height:none!important;aspect-ratio:auto!important}.cover-in{padding-bottom:12px}}
+@media(max-width:900px){
+ .hero.cover--photo{position:relative;display:block;min-height:0;height:auto}
+ .cover-photo{position:absolute!important;inset:0!important;height:auto!important;z-index:0}
+ .cover-photo img{object-position:50% 25%}
+ .cover-in{position:relative!important;inset:auto!important;display:grid;min-height:150vw;padding:60px 16px 14px;grid-template-rows:auto auto auto 1fr auto}
+ .cover--photo>.wrap:last-child{position:relative;z-index:2}
+}

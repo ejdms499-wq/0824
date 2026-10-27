@@ -116,13 +116,14 @@ const heroStatsEl=document.getElementById('heroStats');heroStatsEl.innerHTML=[[S
        ${pro.tools?`<div><dt>Tools</dt><dd><ul class="chips chips--small">${pro.tools.map(t=>`<li>${enc(t)}</li>`).join('')}</ul></dd></div>`:''}
       </dl>
       ${links.length?`<div class="proj-links">${links.map(linkBtn).join('')}</div>`:''}
-     </aside>
+          ${pro.deck?`<div class="deck deck--mini"><div class="deck-head"><span class="gallery-label">기획서 · ${String(pro.deck.count).padStart(2,'0')} slides</span><button type="button" class="deck-all" data-more="deck-${enc(p.id)}">전체 보기 ↗</button></div><div class="deck-mini-row">${Array.from({length:pro.deck.count},(_,i)=>`<button type="button" class="thumb dmini" data-src="${enc(pro.deck.dir)}/s_${String(i+1).padStart(2,'0')}.jpg" data-alt="${enc(p.title)} 기획서 ${i+1}" data-caption="${enc(p.title)} 기획서 · ${i+1} / ${pro.deck.count}" data-group="deck-${enc(p.id)}" data-index="${i}" aria-label="${enc(p.title)} 기획서 ${i+1}"><img src="${enc(pro.deck.dir)}/s_${String(i+1).padStart(2,'0')}.jpg" alt="" loading="lazy" decoding="async"></button>`).join('')}</div></div>`:''}
+    </aside>
     </div>
     <div class="proj-main">
      ${pro.stats?`<ul class="stats">${pro.stats.map(([n,l])=>`<li><strong>${enc(n)}</strong><span>${enc(l)}</span></li>`).join('')}</ul>`:''}
      ${(p.steps||[]).length?`<ol class="steps">${p.steps.map(([t,d],i)=>`<li><span>0${i+1}</span><div><strong>${enc(t)}</strong><p>${enc(d)}</p></div></li>`).join('')}</ol>`:''}
      ${pro.insight?`<blockquote class="insight"><span>INSIGHT</span><p>${enc(pro.insight)}</p></blockquote>`:''}
-     ${pro.deck?`<div class="deck"><div class="deck-head"><span class="gallery-label">Deck — ${String(pro.deck.count).padStart(2,'0')} slides</span><span class="deck-hint">click to flip ↗</span></div><div class="slider"><div class="deck-strip slider-track" tabindex="0">${Array.from({length:pro.deck.count},(_,i)=>`<button type="button" class="thumb slide" data-src="${enc(pro.deck.dir)}/s_${String(i+1).padStart(2,'0')}.jpg" data-alt="${enc(p.title)} 기획서 ${i+1}" data-caption="${enc(p.title)} 기획서 · ${i+1} / ${pro.deck.count}" data-group="deck-${enc(p.id)}" data-index="${i}" aria-label="${enc(p.title)} 기획서 ${i+1} 확대"><img src="${enc(pro.deck.dir)}/s_${String(i+1).padStart(2,'0')}.jpg" alt="${enc(p.title)} 기획서 ${i+1}" loading="lazy" decoding="async"><b>${String(i+1).padStart(2,'0')}</b></button>`).join('')}<button type="button" class="deck-more" data-more="deck-${enc(p.id)}"><span>전체 보기</span><i>${String(pro.deck.count).padStart(2,'0')} slides ↗</i></button></div><div class="slider-nav"><button type="button" class="slider-btn" data-step="-1" aria-label="이전">←</button><button type="button" class="slider-btn" data-step="1" aria-label="다음">→</button></div></div></div>`:''}
+     
      ${gallery.length?`<div class="proj-gallery collage ${p.id==='research'||p.id==='simmyo'?'collage--sheet':''} ${p.id==='simmyo'?'collage--sticker':''}"><span class="gallery-label">${enc(pro.galleryLabel||'Gallery')} · ${String(gallery.length).padStart(2,'0')}</span><div class="collage-grid">${gallery.map((src,i)=>`<button type="button" class="thumb clip clip--${['a','b','c','d','e','f','g','h'][i%8]}" data-src="${enc(src)}" data-alt="${enc(p.title)} 이미지 ${i+1}" data-caption="${enc(p.title)} · ${i+1} / ${gallery.length}" data-group="gal-${enc(p.id)}" data-index="${i}" style="--i:${i}"><img src="${enc(src)}" alt="${enc(p.title)} 이미지 ${i+1}" loading="lazy" decoding="async"><b>${String(i+1).padStart(2,'0')}</b></button>`).join('')}</div></div>`:''}
      ${p.note?`<p class="proj-note">${enc(p.note)}</p>`:''}
     </div>
@@ -144,7 +145,7 @@ const heroStatsEl=document.getElementById('heroStats');heroStatsEl.innerHTML=[[S
 
  /* ── 슬라이더 ── */
  document.addEventListener('click',e=>{const b=e.target.closest('.slider-btn');if(!b)return;const t=b.closest('.slider').querySelector('.slider-track');const f=t.firstElementChild;const w=f?f.getBoundingClientRect().width+12:300;t.scrollBy({left:w*2*(+b.dataset.step),behavior:'smooth'});});
- document.addEventListener('click',e=>{const m=e.target.closest('.deck-more');if(!m)return;const all=[...document.querySelectorAll(`.thumb[data-group="${CSS.escape(m.dataset.more)}"]`)].sort((x,y)=>+x.dataset.index-+y.dataset.index);open(all.map(x=>({src:x.dataset.src,alt:x.dataset.alt,caption:x.dataset.caption})),0);});
+ document.addEventListener('click',e=>{const m=e.target.closest('.deck-more,.deck-all');if(!m)return;const all=[...document.querySelectorAll(`.thumb[data-group="${CSS.escape(m.dataset.more)}"]`)].sort((x,y)=>+x.dataset.index-+y.dataset.index);open(all.map(x=>({src:x.dataset.src,alt:x.dataset.alt,caption:x.dataset.caption})),0);});
  /* ── 라이트박스 ── */
  const lb=document.getElementById('imageLightbox'),lbImg=document.getElementById('lightboxImage'),lbCap=document.getElementById('lightboxCaption'),lbPrev=document.getElementById('lightboxPrev'),lbNext=document.getElementById('lightboxNext'),lbClose=document.getElementById('lightboxClose');
  let items=[],index=0,lastFocus=null;
@@ -223,7 +224,7 @@ const heroStatsEl=document.getElementById('heroStats');heroStatsEl.innerHTML=[[S
 
 /* ── v60 슬라이드 페이저 ── */
 (function(){
-  if(!matchMedia('(min-width:901px)').matches)return;
+  if(!document.documentElement.classList.contains('slides'))return;
   const slides=[...document.querySelectorAll('.hero, .toc-spread, .about, .proj, .contact')];
   slides.forEach(s=>s.classList.add('pg'));
   const pg=document.createElement('div');pg.className='pager';

@@ -1248,3 +1248,9 @@ h2.contact-title.bubble .reg{color:var(--ink)}
 .cover-line .c1{color:#fff}.cover-line .c2{color:var(--yellow)}
 @media(max-width:900px){.cover-photo img{object-position:50% 70%}}
 @media(max-width:900px){.cover-in{min-height:168vw}.cover-photo img{object-position:50% 55%}}
+/* 소개: 나무늘보 낙서 위치 정돈 — 사진 밖, 캡션 옆 */
+.about-doodle{position:static;width:72px;transform:none;display:inline-block;vertical-align:middle;margin:6px 0 0 6px}
+.about-portrait--sloth{display:grid;grid-template-columns:1fr auto;gap:0 8px;align-items:end}
+.about-portrait--sloth .about-portrait-frame{grid-column:1/-1}
+.about-portrait--sloth figcaption{grid-column:1}
+.contact-doodle{margin-bottom:18px}

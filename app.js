@@ -121,7 +121,6 @@ const heroStatsEl=document.getElementById('heroStats');heroStatsEl.innerHTML=[[S
     </aside>
     </div>
     <div class="proj-main">
-     ${pro.stats?`<ul class="stats">${pro.stats.map(([n,l])=>`<li><strong>${enc(n)}</strong><span>${enc(l)}</span></li>`).join('')}</ul>`:''}
      
      ${gallery.length?`<div class="proj-gallery collage ${p.id==='research'||p.id==='simmyo'?'collage--sheet':''} ${p.id==='simmyo'?'collage--sticker':''}"><span class="gallery-label">${enc(pro.galleryLabel||'Gallery')} · ${String(gallery.length).padStart(2,'0')}</span><div class="collage-grid">${gallery.map((src,i)=>`<button type="button" class="thumb clip clip--${['a','b','c','d','e','f','g','h'][i%8]}" data-src="${enc(src)}" data-alt="${enc(p.title)} 이미지 ${i+1}" data-caption="${enc(p.title)} · ${i+1} / ${gallery.length}" data-group="gal-${enc(p.id)}" data-index="${i}" style="--i:${i}"><img src="${enc(src)}" alt="${enc(p.title)} 이미지 ${i+1}" loading="lazy" decoding="async"><b>${String(i+1).padStart(2,'0')}</b></button>`).join('')}</div></div>`:''}
      ${p.note?`<p class="proj-note">${enc(p.note)}</p>`:''}

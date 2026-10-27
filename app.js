@@ -13,10 +13,10 @@
 
  /* 카테고리 순서와 라벨 */
  const CATS=[
-  {key:'fashion',no:'01',ko:'패션 · 스타일링',en:'Fashion & Styling',lead:'현장에서 시작된 감각.'},
-  {key:'character',no:'02',ko:'캐릭터 · 세계관',en:'Character & World',lead:'성격이 먼저, 생김새는 그 다음.'},
-  {key:'interactive',no:'03',ko:'인터랙티브 웹',en:'Interactive Web',lead:'읽는 콘텐츠를 만지는 경험으로. 경성야록에서 심묘한 산책으로 이어지는 하나의 세계.'},
-  {key:'ai',no:'04',ko:'AI · 데이터',en:'AI × Data',lead:'숫자를 이야기로 번역하기.'}
+  {key:'fashion',no:'01',ko:'패션 · 스타일링',en:'Fashion & Styling',lead:'옷보다 먼저 배운 건, 한 프레임에서 뭐가 먼저 읽히는가.'},
+  {key:'character',no:'02',ko:'캐릭터 · 세계관',en:'Character & World',lead:'성격부터 정하고 생김새는 나중에. 그래야 오래 갑니다.'},
+  {key:'interactive',no:'03',ko:'인터랙티브 웹',en:'Interactive Web',lead:'읽는 걸 만지게. 빵집, 1930년 경성, 고양이 한 마리, 그리고 음악.'},
+  {key:'ai',no:'04',ko:'AI · 데이터',en:'AI × Data',lead:'숫자는 차갑지만, 손에 쥐면 이야기가 됩니다.'}
  ];
  const byCat=k=>projects.filter(p=>p.category===k);
 
@@ -41,7 +41,7 @@ const heroStatsEl=document.getElementById('heroStats');heroStatsEl.innerHTML=[[S
  /* ── 프로젝트 목차 (카테고리별) ── */
  const row=p=>`<li><a href="#project-${enc(p.id)}"><span class="pi-pic"><img src="${enc(p.image||'assets/projects/styling/editorial/cha_singles_01.webp')}" alt="" loading="lazy"></span><span class="pi-no"><i class="num">${String(parseInt(p.number,10)||p.number)}</i></span><span class="pi-title">${enc(p.title)}</span><span class="pi-tag"><span class="dots"></span>${enc(p.categoryLabel)}</span><span class="pi-arrow" aria-hidden="true">↓</span></a></li>`;
  const indexHtml=CATS.map(c=>{const list=byCat(c.key);if(!list.length)return '';return `<li class="pindex-group"><div class="pindex-group-head"><span class="pindex-group-no">${c.no}</span><strong>${enc(c.ko)}</strong><em>${enc(c.en)}</em><span class="pindex-group-count">${String(list.length).padStart(2,'0')}</span></div><ol class="pindex-rows">${list.map(row).join('')}</ol></li>`;}).join('');
- document.getElementById('pindexList').innerHTML=indexHtml;
+ {const pl=document.getElementById('pindexList');if(pl)pl.innerHTML=indexHtml;}
  document.getElementById('indexPanelList').innerHTML=`<ol class="pindex-list pindex-list--panel">${indexHtml}</ol>`;
 
  /* ── 공통 조각 ── */
@@ -76,8 +76,9 @@ const heroStatsEl=document.getElementById('heroStats');heroStatsEl.innerHTML=[[S
      </div>
     </div>
     <div class="process">
-     <div class="process-head"><span class="sec-no">What I do — 06 steps</span><h3>한 컷이 완성되기까지, <em>내가 맡는 여섯 단계</em></h3></div>
-     <div class="slider"><ol class="process-list slider-track" tabindex="0">${(pro.process||[]).map((s,i)=>`<li class="process-item process-item--type"><span class="pt-no">${enc(s.no)}</span><span class="pt-en">${enc(s.en)}</span><strong class="pt-ko">${enc(s.title)}</strong><p class="pt-desc">${enc(s.desc)}</p><i class="pt-line" aria-hidden="true"></i></li>`).join('')}</ol><div class="slider-nav"><button type="button" class="slider-btn" data-step="-1" aria-label="이전">←</button><button type="button" class="slider-btn" data-step="1" aria-label="다음">→</button></div></div>
+     <div class="process-head"><span class="sec-no">What I do — 06 steps</span><h3>한 컷이 완성되기까지, <em>내가 하는 여섯 가지 일</em></h3></div>
+     <ol class="howto">${(pro.process||[]).map((s,i)=>`<li><span class="ht-no">${enc(s.no)}</span><span class="ht-en dotlabel">${enc(s.en)}</span><strong class="ht-ko">${enc(s.title)}</strong><p>${enc(s.desc)}</p></li>`).join('')}</ol>
+
     </div>
     ${pro.insight?`<blockquote class="insight"><span>INSIGHT</span><p>${enc(pro.insight)}</p></blockquote>`:''}
     ${p.note?`<p class="proj-note">${enc(p.note)}</p>`:''}
@@ -113,7 +114,7 @@ const heroStatsEl=document.getElementById('heroStats');heroStatsEl.innerHTML=[[S
      ${(p.steps||[]).length?`<ol class="steps">${p.steps.map(([t,d],i)=>`<li><span>0${i+1}</span><div><strong>${enc(t)}</strong><p>${enc(d)}</p></div></li>`).join('')}</ol>`:''}
      ${pro.insight?`<blockquote class="insight"><span>INSIGHT</span><p>${enc(pro.insight)}</p></blockquote>`:''}
      ${pro.deck?`<div class="deck"><div class="deck-head"><span class="gallery-label">Deck — ${String(pro.deck.count).padStart(2,'0')} slides</span><span class="deck-hint">click to flip ↗</span></div><div class="slider"><div class="deck-strip slider-track" tabindex="0">${Array.from({length:pro.deck.count},(_,i)=>`<button type="button" class="thumb slide" data-src="${enc(pro.deck.dir)}/s_${String(i+1).padStart(2,'0')}.jpg" data-alt="${enc(p.title)} 기획서 ${i+1}" data-caption="${enc(p.title)} 기획서 · ${i+1} / ${pro.deck.count}" data-group="deck-${enc(p.id)}" data-index="${i}" aria-label="${enc(p.title)} 기획서 ${i+1} 확대"><img src="${enc(pro.deck.dir)}/s_${String(i+1).padStart(2,'0')}.jpg" alt="${enc(p.title)} 기획서 ${i+1}" loading="lazy" decoding="async"><b>${String(i+1).padStart(2,'0')}</b></button>`).join('')}<button type="button" class="deck-more" data-more="deck-${enc(p.id)}"><span>전체 보기</span><i>${String(pro.deck.count).padStart(2,'0')} slides ↗</i></button></div><div class="slider-nav"><button type="button" class="slider-btn" data-step="-1" aria-label="이전">←</button><button type="button" class="slider-btn" data-step="1" aria-label="다음">→</button></div></div></div>`:''}
-     ${gallery.length?`<div class="proj-gallery collage ${p.id==='research'?'collage--sheet':''}"><span class="gallery-label">${enc(pro.galleryLabel||'Gallery')} · ${String(gallery.length).padStart(2,'0')}</span><div class="collage-grid">${gallery.map((src,i)=>`<button type="button" class="thumb clip clip--${['a','b','c','d','e','f','g','h'][i%8]}" data-src="${enc(src)}" data-alt="${enc(p.title)} 이미지 ${i+1}" data-caption="${enc(p.title)} · ${i+1} / ${gallery.length}" data-group="gal-${enc(p.id)}" data-index="${i}" style="--i:${i}"><img src="${enc(src)}" alt="${enc(p.title)} 이미지 ${i+1}" loading="lazy" decoding="async"><b>${String(i+1).padStart(2,'0')}</b></button>`).join('')}</div></div>`:''}
+     ${gallery.length?`<div class="proj-gallery collage ${p.id==='research'||p.id==='simmyo'?'collage--sheet':''} ${p.id==='simmyo'?'collage--sticker':''}"><span class="gallery-label">${enc(pro.galleryLabel||'Gallery')} · ${String(gallery.length).padStart(2,'0')}</span><div class="collage-grid">${gallery.map((src,i)=>`<button type="button" class="thumb clip clip--${['a','b','c','d','e','f','g','h'][i%8]}" data-src="${enc(src)}" data-alt="${enc(p.title)} 이미지 ${i+1}" data-caption="${enc(p.title)} · ${i+1} / ${gallery.length}" data-group="gal-${enc(p.id)}" data-index="${i}" style="--i:${i}"><img src="${enc(src)}" alt="${enc(p.title)} 이미지 ${i+1}" loading="lazy" decoding="async"><b>${String(i+1).padStart(2,'0')}</b></button>`).join('')}</div></div>`:''}
      ${p.note?`<p class="proj-note">${enc(p.note)}</p>`:''}
     </div>
    </div>

@@ -1254,3 +1254,60 @@ h2.contact-title.bubble .reg{color:var(--ink)}
 .about-portrait--sloth .about-portrait-frame{grid-column:1/-1}
 .about-portrait--sloth figcaption{grid-column:1}
 .contact-doodle{margin-bottom:18px}
+/* ═══ v58 — 표지: 로고는 하늘에, 캐릭터 얼굴 비움 ═══ */
+.cover-photo{aspect-ratio:auto!important;height:min(100svh - 52px,86vw)!important;max-height:none!important}
+.cover-photo img{object-position:50% 100%!important}
+.cover-in{grid-template-rows:auto auto 1fr auto auto;padding-top:60px}
+.cover--photo h1.bubble{font-size:clamp(70px,11vw,190px);margin-bottom:0}
+.cover--photo h1.bubble.is-gloss .gloss-svg{width:min(100%,960px)}
+.cover-line{font-size:clamp(28px,3.6vw,58px);align-self:start;grid-row:3;margin-top:4px}
+.cover-line .c2{color:var(--yellow)}
+.cover--photo .cover-info{grid-row:3;align-self:start}
+.cover--photo .cover-big{grid-row:4;align-self:end}
+.cover--photo .hero-actions{grid-row:5}
+.cover--photo .cover-strap{font-size:12.5px;padding:6px 10px}
+/* 소개 머리: 번호칩 + 제목 한 줄 정렬 */
+.about .sec-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+.about .sec-head .sec-no{align-self:center}
+.about .sec-head h2{display:flex;align-items:baseline;gap:12px;margin:0}
+.about .sec-head h2 em{margin:0}
+.sec-head h2 em{filter:none!important;-webkit-text-fill-color:initial!important}
+.about-portrait--sloth{display:block}
+.about-doodle{position:absolute;right:-14px;bottom:52px;width:84px;transform:rotate(-8deg);margin:0}
+.about-portrait--sloth{position:relative}
+.about-portrait--sloth figcaption{margin-top:10px}
+@media(max-width:900px){.cover-photo{height:auto!important}.cover-in{min-height:168vw}.cover-line{font-size:clamp(26px,7.5vw,40px)}}
+.cover-photo img{object-position:50% 38%!important}
+.hero.cover--photo{overflow:hidden}
+.cover--photo .cover-big{font-size:clamp(80px,9vw,150px);line-height:.8;margin-bottom:4px}
+.cover-line{grid-row:4;align-self:end;margin-bottom:10px}
+.cover--photo .cover-info{grid-row:3}
+.cover-in{grid-template-rows:auto auto 1fr auto auto}
+@media(min-width:1700px){.cover-photo{height:min(100svh - 52px,78vw)!important}}
+/* v58b — 오버레이를 사진 높이에 딱 맞춤 */
+.hero.cover--photo{position:relative}
+.cover-photo{height:calc(100svh - 52px)!important;max-height:1000px!important}
+.cover-photo img{object-position:50% 30%!important}
+.cover-in{position:absolute!important;inset:0!important;min-height:0!important;height:100%;display:grid;grid-template-rows:auto auto 1fr auto;grid-template-areas:'strap strap' 'logo logo' 'vert info' 'act big';padding:60px var(--gutter) 22px;box-sizing:border-box;row-gap:0}
+.cover--photo .cover-strap{grid-area:strap}
+.cover--photo h1.bubble{grid-area:logo}
+.cover--photo .cover-info{grid-area:info;grid-row:auto;align-self:start}
+.cover-line{grid-area:vert;grid-row:auto;align-self:end;margin:0 0 10px}
+.cover--photo .hero-actions{grid-area:act;grid-row:auto;align-self:end;padding:0}
+.cover--photo .cover-big{grid-area:big;grid-row:auto;align-self:end;justify-self:end;margin:0;font-size:clamp(70px,8vw,130px)}
+.cover--photo>.wrap:last-child{position:relative;z-index:3}
+@media(max-width:900px){.cover-photo{height:auto!important;max-height:none!important}.cover-in{position:relative!important;height:auto;min-height:168vw!important;grid-template-areas:'strap' 'logo' 'info' 'vert' 'act';grid-template-rows:auto auto auto 1fr auto}.cover--photo .cover-big{display:none}}
+/* 오버레이는 사진 박스 안에만 */
+.cover-photo{position:relative!important}
+.cover-in{position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;height:auto}
+@media(max-width:900px){
+ .cover-photo{height:auto!important;min-height:170vw}
+ .cover-photo img{position:absolute;inset:0;object-position:50% 40%!important}
+ .cover-in{position:relative!important;height:auto;min-height:170vw!important;padding:60px 16px 16px!important;grid-template-areas:'strap' 'logo' 'info' 'vert' 'act'!important;grid-template-rows:auto auto auto 1fr auto!important}
+ .cover--photo h1.bubble{font-size:clamp(64px,19vw,100px)}
+ .cover--photo .cover-info{justify-self:start;text-align:left}
+ .cover--photo .cover-spec{display:flex;gap:14px}
+ .cover--photo .cover-spec div{border:0!important;padding:0}
+ .cover--photo .cover-big{display:none}
+}
+@media(max-width:900px){.cover--photo h1.bubble.is-gloss .gloss-svg{width:min(100%,300px);height:auto}.cover--photo .cover-info{order:0}.cover-in{grid-template-areas:'strap' 'logo' 'info' 'vert' 'act'!important}.cover-line{margin-bottom:8px}}

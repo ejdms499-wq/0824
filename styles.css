@@ -1332,3 +1332,94 @@ h2.contact-title.bubble .reg{color:var(--ink)}
 }
 .cover-photo picture{display:contents}
 @media(max-width:900px){.cover-photo img{object-position:50% 35%!important}.cover--photo h1.bubble.is-gloss .gloss-svg{width:min(100%,240px)}.cover-in{min-height:150vw!important}.cover-photo{min-height:150vw}}
+
+/* ═══════════════ v60 — ONE-PAGE SLIDES: 섹션마다 한 화면, 하단 페이저 ═══════════════ */
+@media(min-width:901px){
+ html{scroll-snap-type:y mandatory;scroll-padding-top:0}
+ body{overflow-x:clip}
+ .pg{height:100svh;min-height:100svh;box-sizing:border-box;scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden;position:relative;padding-top:52px;display:flex;flex-direction:column}
+ .pg>.wrap{width:100%}
+ /* 표지 */
+ .hero.cover--photo.slide{padding-top:52px}
+ .hero.cover--photo .cover-photo{flex:1 1 auto;aspect-ratio:auto!important;height:auto!important;min-height:0}
+ .hero.cover--photo .hero-stats li{padding-top:10px;padding-bottom:10px}
+ .hero-stats strong{font-size:clamp(26px,2.4vw,38px)}
+ /* 목차 */
+ .toc-spread.slide{padding:52px 0 0;justify-content:center}
+ .toc-spread .wrap{display:flex;flex-direction:column;height:calc(100svh - 52px);padding-top:18px;padding-bottom:40px}
+ .toc-grid{flex:1 1 auto;grid-template-rows:1fr 1fr}
+ .toc-grid a{min-height:0;grid-template-rows:auto 1fr auto auto;padding:10px 12px}
+ .toc-sketch{height:auto!important;min-height:0}
+ .toc-sketch img{max-height:100%}
+ .toc-title{font-size:16px}
+ /* 소개 */
+ .about.slide .wrap{display:flex;flex-direction:column;height:calc(100svh - 52px);padding-top:16px;padding-bottom:36px;overflow:hidden}
+ .about .sec-head{margin-bottom:12px}
+ .about-grid{flex:1 1 auto;min-height:0;grid-template-columns:minmax(0,5fr) minmax(0,7fr)!important;gap:28px}
+ .about-main{display:grid;grid-template-columns:200px 1fr;gap:18px;align-content:start}
+ .about-portrait--sloth{grid-row:1/3}
+ .about-portrait--sloth .about-portrait-frame{aspect-ratio:4/5}
+ .about-tagline{font-size:clamp(18px,1.6vw,24px)}
+ .about-mission{font-size:13px;line-height:1.7}
+ .about-focus{grid-column:1/-1}
+ .about-side{overflow:auto;min-height:0;font-size:12.5px;padding-right:6px}
+ .about-side .about-block{margin-bottom:12px}
+ .timeline li{padding:7px 0}
+ .tool-group{padding:5px 0}
+ /* 챕터 띠 → 숨기고 프로젝트 안 라벨로 */
+ .cat-band{display:none}
+ /* 프로젝트: 왼쪽 큰 이미지 / 오른쪽 내용 */
+ .proj.slide .wrap{display:flex;flex-direction:column;height:calc(100svh - 52px);padding-top:14px;padding-bottom:40px;overflow:hidden}
+ .proj-head{margin-bottom:10px;max-width:none;display:grid;grid-template-columns:1fr auto;grid-template-areas:'meta meta' 'title sub';align-items:end;gap:4px 18px}
+ .proj-meta{grid-area:meta}
+ .proj-title{grid-area:title;font-size:clamp(28px,3.4vw,52px)}
+ .proj-sub{grid-area:sub;font-size:14px;margin:0 0 6px}
+ .proj-grid{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:22px;align-items:stretch}
+ .proj-hero{margin:0;min-height:0;display:flex;flex-direction:column}
+ .proj-hero-frame{flex:1 1 auto;min-height:0}
+ .proj-hero-frame .thumb,.proj-hero-frame img{height:100%!important;width:100%!important;object-fit:cover!important}
+ .proj-hero figcaption{flex:0 0 auto}
+ .proj-side{min-height:0;overflow:auto;display:flex;flex-direction:column;gap:10px;padding-right:6px}
+ .proj-desc{font-size:13.5px;line-height:1.7;padding:10px 0;margin:0}
+ .facts{font-size:12px}
+ .facts dt,.facts dd{padding:5px 0}
+ .proj-main{display:contents}
+ .proj-main>*{order:5}
+ .stats{grid-template-columns:repeat(3,minmax(0,1fr));font-size:12px}
+ .stats li{padding:8px 10px 8px 0}
+ .stats strong{font-size:22px}
+ .steps,.howto,.process,.proj-note{display:none}
+ .insight{padding:10px 14px;font-size:14px}
+ .insight p{font-size:15px}
+ .deck,.proj-gallery{margin:0}
+ .deck{padding:8px 10px}
+ .deck-head{margin-bottom:6px}
+ 
+ .collage-grid{display:flex;gap:6px;overflow-x:auto;grid-template-columns:none}
+ .collage-grid .clip{flex:0 0 96px;aspect-ratio:1!important;grid-column:auto!important;grid-row:auto!important}
+ .collage-grid .clip b{display:none}
+ .proj-links{order:6}
+ /* 크레딧 블록 (fashion) */
+ .proj--credits .credits-grid{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:18px;margin:0}
+ .proj--credits .lookbook{grid-column:1;grid-row:1;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));margin:0;overflow:hidden}
+ .proj--credits .lb-item{padding:6px;gap:4px;grid-template-rows:1fr auto}
+ .proj--credits .lb-pic{aspect-ratio:auto;min-height:0;height:100%}
+ .proj--credits .lb-look{display:none}
+ .proj--credits .lb-meta strong{font-size:13px}
+ .proj--credits .credits-copy{grid-column:2;grid-row:1;display:flex;flex-direction:column;gap:10px;overflow:auto;min-height:0}
+ .proj--credits .credits-copy>*{grid-column:auto!important;grid-row:auto!important}
+ .proj--credits .process,.proj--credits .insight{display:none}
+ .proj--credits .credits-statement{font-size:15px;padding:12px}
+ /* 연락 */
+ .contact.slide{justify-content:center;margin-top:0}
+ .contact.slide .wrap{padding-bottom:60px}
+ h2.contact-title.bubble.is-gloss .gloss-svg{width:min(100%,640px)}
+ .foot{display:none}
+ /* 페이저 */
+ .pager{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:900;display:flex;align-items:center;gap:12px;background:rgba(247,243,234,.92);border:1.5px solid var(--ink);border-radius:999px;padding:5px 8px;font:600 12px var(--disp);letter-spacing:.1em;backdrop-filter:blur(6px)}
+ .pager button{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--ink);background:#fff;font:600 13px var(--disp);cursor:pointer}
+ .pager button:hover{background:var(--pink);color:#fff;border-color:var(--pink)}
+ .pager b{color:var(--pink)}
+ .pager i{font-style:normal;color:var(--muted);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500;letter-spacing:.02em;font-family:var(--kr)}
+}
+@media(min-width:901px){.cat,.proj,.contact,.about,.toc-spread{margin:0!important}.pg{margin:0!important}.proj.pg .wrap{padding-bottom:48px}.pager{bottom:10px}.deck-strip .slide{width:clamp(200px,16vw,260px)!important}}

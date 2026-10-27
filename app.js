@@ -218,3 +218,20 @@ const heroStatsEl=document.getElementById('heroStats');heroStatsEl.innerHTML=[[S
   }
   document.querySelectorAll('h1.bubble, h2.contact-title.bubble, h1.cr-title.bubble').forEach(build);
 })();
+
+/* ── v60 슬라이드 페이저 ── */
+(function(){
+  if(!matchMedia('(min-width:901px)').matches)return;
+  const slides=[...document.querySelectorAll('.hero, .toc-spread, .about, .proj, .contact')];
+  slides.forEach(s=>s.classList.add('pg'));
+  const pg=document.createElement('div');pg.className='pager';
+  pg.innerHTML=`<button type="button" data-d="-1" aria-label="이전">←</button><span><b>01</b> / ${String(slides.length).padStart(2,'0')}</span><i></i><button type="button" data-d="1" aria-label="다음">→</button>`;
+  document.body.appendChild(pg);
+  const label=s=>s.classList.contains('hero')?'표지':s.classList.contains('toc-spread')?'목차':s.classList.contains('about')?'소개':s.classList.contains('contact')?'연락':(s.querySelector('.proj-title')?.textContent.trim()||'');
+  let cur=0;
+  const upd=()=>{const y=window.scrollY+window.innerHeight/2;let i=0;slides.forEach((s,k)=>{if(s.offsetTop<=y)i=k});cur=i;pg.querySelector('b').textContent=String(i+1).padStart(2,'0');pg.querySelector('i').textContent=label(slides[i])};
+  const go=d=>{const n=Math.max(0,Math.min(slides.length-1,cur+d));slides[n].scrollIntoView({behavior:'smooth',block:'start'})};
+  pg.addEventListener('click',e=>{const b=e.target.closest('button');if(b)go(+b.dataset.d)});
+  window.addEventListener('keydown',e=>{if(e.target.matches('input,textarea'))return;if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();go(1)}if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(-1)}});
+  window.addEventListener('scroll',upd,{passive:true});upd();
+})();

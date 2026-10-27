@@ -1311,3 +1311,24 @@ h2.contact-title.bubble .reg{color:var(--ink)}
  .cover--photo .cover-big{display:none}
 }
 @media(max-width:900px){.cover--photo h1.bubble.is-gloss .gloss-svg{width:min(100%,300px);height:auto}.cover--photo .cover-info{order:0}.cover-in{grid-template-areas:'strap' 'logo' 'info' 'vert' 'act'!important}.cover-line{margin-bottom:8px}}
+/* v59 — 표지: 사진 비율 고정(16:9) → 어떤 창에서도 캐릭터 전부 보임 */
+@media(min-width:901px){
+ .cover-photo{height:auto!important;aspect-ratio:16/9!important;max-height:none!important}
+ .cover-photo img{object-fit:cover;object-position:50% 50%!important}
+ .cover--photo h1.bubble{font-size:clamp(60px,9.5vw,170px)}
+ .cover--photo h1.bubble.is-gloss .gloss-svg{width:min(100%,840px)}
+ .cover-in{padding-top:52px}
+ .cover--photo .cover-strap{font-size:12px}
+ .cover-line{font-size:clamp(26px,3.2vw,52px)}
+}
+@media(min-width:901px){
+ .cover-photo{aspect-ratio:2/1!important}
+ .cover-photo img{object-position:50% 50%!important}
+ .cover--photo h1.bubble{font-size:clamp(56px,8.2vw,150px)}
+ .cover--photo h1.bubble.is-gloss .gloss-svg{width:min(100%,760px)}
+ .cover-in{grid-template-rows:auto auto 1fr auto}
+ .cover-line{font-size:clamp(24px,2.9vw,48px)}
+ .cover--photo .cover-info{margin-top:6px}
+}
+.cover-photo picture{display:contents}
+@media(max-width:900px){.cover-photo img{object-position:50% 35%!important}.cover--photo h1.bubble.is-gloss .gloss-svg{width:min(100%,240px)}.cover-in{min-height:150vw!important}.cover-photo{min-height:150vw}}

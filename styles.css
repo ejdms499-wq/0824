@@ -1117,3 +1117,36 @@ h2.contact-title.bubble span{color:var(--sky);-webkit-text-fill-color:var(--sky)
 /* 중복 목차 제거 후 간격 */
 #projects{scroll-margin-top:80px}
 @media(max-width:900px){.howto{grid-template-columns:repeat(2,minmax(0,1fr))}.howto li{min-height:0}.collage--sticker .collage-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+
+/* ═══ v53 — 글로시 로고 · 룩북 크레딧 ═══ */
+/* 글로시: 흰 하이라이트 그라데이션 + 진핑크 두께 */
+h1.bubble,h2.contact-title.bubble{-webkit-text-fill-color:transparent;background:linear-gradient(180deg,#ff9fc4 0%,#ff5f99 22%,var(--pink) 45%,var(--pink) 100%);-webkit-background-clip:text;background-clip:text;color:var(--pink);filter:drop-shadow(.022em .04em 0 var(--pink2)) drop-shadow(0 .06em .06em rgba(0,0,0,.28))}
+h1.bubble{position:relative}
+h1.bubble::before{content:attr(aria-label);position:absolute;inset:0;z-index:2;pointer-events:none;-webkit-text-fill-color:transparent;background:linear-gradient(180deg,rgba(255,255,255,.75) 0%,rgba(255,255,255,.35) 14%,rgba(255,255,255,0) 32%);-webkit-background-clip:text;background-clip:text;filter:none}
+h2.contact-title.bubble span{-webkit-text-fill-color:transparent;background:linear-gradient(180deg,#bfe9f7 0%,#86d4ee 22%,var(--sky) 45%,var(--sky) 100%);-webkit-background-clip:text;background-clip:text}
+h2.contact-title.bubble .reg{-webkit-text-fill-color:var(--ink);background:none}
+.bar-logo,.cr-bar-title strong{-webkit-text-fill-color:transparent;background:linear-gradient(180deg,#ff9fc4,var(--pink) 50%);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(.03em .05em 0 var(--pink2))}
+/* 룩북: 뽀빠이 '스트리트 스냅' 페이지 — 사진 + 아이템 리스트 */
+.credits-grid{grid-template-rows:auto}
+.credits-grid .lookbook{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:2px solid var(--ink);border-left:1px solid var(--ink);margin-bottom:18px}
+.credits-grid .credits-copy{grid-column:1/-1;display:grid;grid-template-columns:2fr 1fr 1fr;gap:18px;align-items:start}
+.credits-grid .credits-copy .credits-statement{grid-column:1;grid-row:1/3}
+.credits-grid .credits-copy .facts{grid-column:2/4}
+.credits-grid .credits-copy .stats{grid-column:2/4}
+.credits-grid .credits-copy .proj-links{grid-column:1/-1}
+.lb-item{display:grid;grid-template-rows:auto auto 1fr;gap:10px;padding:12px;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);background:#fff;text-decoration:none;color:var(--ink);transition:background .3s var(--ease)}
+.lb-item:hover{background:#fff7fb}
+.lb-pic{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--ink)}
+.lb-pic img{width:100%;height:100%;object-fit:cover;object-position:50% 15%;display:block;filter:none!important;transition:transform .5s var(--ease)}
+.lb-item:hover .lb-pic img{transform:scale(1.04)}
+.lb-pic b{position:absolute;left:8px;top:8px;display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--pink);color:#fff;font:400 13px var(--bub)}
+.lb-meta{display:grid;gap:2px}
+.lb-meta strong{font:400 19px/1.1 var(--krd);letter-spacing:0}
+.lb-meta em{font:600 10.5px var(--disp);letter-spacing:.12em;text-transform:uppercase;font-style:normal;color:var(--pink)}
+.lb-look{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.lb-look li{display:flex;align-items:baseline;gap:8px;padding:5px 0;border-bottom:1px dotted rgba(0,0,0,.35);font:400 11.5px var(--kr)}
+.lb-look li span:first-child{font:600 10px var(--disp);letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);white-space:nowrap}
+.lb-look li i{flex:1;border-bottom:1px dotted rgba(0,0,0,.3);transform:translateY(-3px)}
+.lb-look li span:last-child{white-space:nowrap}
+@media(max-width:900px){.credits-grid .lookbook{grid-template-columns:repeat(2,minmax(0,1fr))}.credits-grid .credits-copy{grid-template-columns:1fr}.credits-grid .credits-copy>*{grid-column:auto!important;grid-row:auto!important}}

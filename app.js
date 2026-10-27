@@ -60,12 +60,16 @@ const heroStatsEl=document.getElementById('heroStats');heroStatsEl.innerHTML=[[S
      <p class="proj-sub">${enc(p.subtitle||p.intro)}</p>
     </header>
     <div class="credits-grid">
-     <div class="credits-cover credits-photos">
-      ${[['assets/projects/styling/editorial/cha_singles_cover.jpg','Singles','차준환 · 커버'],['assets/projects/styling/bold_01.jpg','BoldPage','강유석 · 커버'],['assets/projects/styling/oliveyoung/oy_lead.jpg','Olive Young','매거진 화보'],['assets/projects/styling/editorial/ha_vogue_lead.jpg','VOGUE','하정우 · 화보'],['assets/projects/styling/koo_bb_lead.jpg','Brooks Brothers','구교환 · 캠페인'],['assets/projects/styling/editorial/shin_bazaar_lead.jpg','BAZAAR','신승호 · 화보']].map(([src,lab,who],i)=>`<a class="cg-item" href="credits.html"><img src="${src}" alt="" loading="lazy"><b>${String(i+1).padStart(2,'0')}</b></a>`).join('')}
+     <div class="lookbook">
+      ${[
+       ['assets/projects/styling/editorial/cha_singles_cover.jpg','Singles','차준환','Cover',['Top / 블루 니트 탱크','Belt / 블랙 레더','Pants / 블랙 데님']],
+       ['assets/projects/styling/bold_01.jpg','BoldPage','강유석','Cover story',['Shirt / 블루 스트라이프','Headphone / 블랙','Mood / 소년성']],
+       ['assets/projects/styling/oliveyoung/oy_lead.jpg','Olive Young Magazine','브랜드 화보','Editorial',['Knit / 레드 · 블루','Pants / 그레이 · 브라운','Chair / 오렌지']],
+       ['assets/projects/styling/editorial/ha_vogue_lead.jpg','VOGUE','하정우','Editorial',['Shirt / 화이트','Jacket / 블랙','Mood / 클래식']],
+       ['assets/projects/styling/koo_bb_lead.jpg','Brooks Brothers','구교환','Campaign',['Jacket / 네이비 블레이저','Shirt / 핑크 옥스퍼드','Tie / 레지멘탈']],
+       ['assets/projects/styling/editorial/shin_bazaar_lead.jpg',"Harper's BAZAAR",'신승호','Editorial',['Tee / 블랙','Pants / 블랙','Mood / 모노크롬']]
+      ].map(([src,pub,who,kind,look],i)=>`<a class="lb-item" href="credits.html"><span class="lb-pic"><img src="${src}" alt="" loading="lazy"><b>${String(i+1).padStart(2,'0')}</b></span><span class="lb-meta"><strong>${enc(who)}</strong><em>${enc(pub)} · ${enc(kind)}</em></span><ul class="lb-look">${look.map(l=>{const [k,v]=l.split(' / ');return `<li><span>${enc(k)}</span><i></i><span>${enc(v)}</span></li>`}).join('')}</ul></a>`).join('')}
      </div>
-     <ol class="credit-list">
-      ${[['Singles','차준환','커버 · 스타일링 팀 참여'],['BoldPage','강유석','커버 · 비하인드'],['Olive Young Magazine','브랜드 화보','스타일링 팀 참여'],['VOGUE','하정우','에디토리얼'],['Brooks Brothers','구교환','캠페인'],["Harper's BAZAAR",'신승호','에디토리얼'],['&TEAM · Bewitched','무대 · 라이브 클립','의상 준비 참여']].map(([m,w,r],i)=>`<li><span>${String(i+1).padStart(2,'0')}</span><strong>${enc(m)}</strong><em>${enc(w)}</em><i>${enc(r)}</i></li>`).join('')}
-     </ol>
      <div class="credits-copy">
       <p class="credits-statement">${enc(pro.statement||'')}</p>
       <dl class="facts facts--inline">

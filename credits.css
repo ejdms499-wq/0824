@@ -457,3 +457,19 @@ h1.cr-title.bubble span{color:var(--sky);-webkit-text-fill-color:var(--sky)}
 @media(max-width:900px){.cr-series-body{grid-template-columns:1fr}}
 .cue{align-content:start;grid-template-rows:auto auto 1fr}
 .cue-col-text{align-self:start}
+
+/* v53 — 무대 큐 정렬 */
+.cue{grid-template-rows:auto auto;align-items:start}
+.cue-col-no{align-self:start}
+.cue-col-text{align-self:start;margin:0}
+.cue-col-media{align-self:start}
+.cue-lead .thumb{width:100%!important;height:auto!important;aspect-ratio:4/5!important}
+.cue-lead img{object-fit:cover!important;object-position:50% 10%}
+h1.cr-title.bubble{-webkit-text-fill-color:transparent;background:linear-gradient(180deg,#ff9fc4 0%,#ff5f99 22%,var(--pink) 45%,var(--pink) 100%);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(.022em .04em 0 var(--pink2)) drop-shadow(0 .06em .06em rgba(0,0,0,.25))}
+h1.cr-title.bubble span{-webkit-text-fill-color:transparent;background:linear-gradient(180deg,#bfe9f7 0%,#86d4ee 22%,var(--sky) 45%,var(--sky) 100%);-webkit-background-clip:text;background-clip:text}
+/* v53 fix: 큐 격자 — 세로 늘어남 방지 */
+.cue{display:grid!important;grid-template-columns:minmax(0,4fr) minmax(0,8fr)!important;grid-template-areas:'no media' 'text media' 'gap media'!important;grid-template-rows:auto auto 1fr!important;align-items:start!important}
+.cue-col-no{grid-area:no!important;position:static!important;top:auto!important}
+.cue-col-text{grid-area:text!important;position:static!important;top:auto!important}
+.cue-col-media{grid-area:media!important}
+@media(max-width:900px){.cue{grid-template-columns:1fr!important;grid-template-areas:'no' 'text' 'media'!important;grid-template-rows:auto!important}}

@@ -996,3 +996,77 @@ h2.contact-title.bubble span{color:var(--sky);-webkit-text-fill-color:var(--sky)
 .cover-in{grid-template-columns:auto 1fr}
 .cover--photo .cover-info,.cover--photo .cover-big{grid-column:2}
 .cover-vert{grid-column:1;grid-row:3/5}
+
+
+/* ═══════════════ v50 — B: 격자 정돈 + 손그림 레이어 ═══════════════ */
+/* 회전 전부 0 */
+.scrap,.clip,.pindex-rows a,.citem-pic{transform:none!important}
+.pindex-rows a:hover,.clip:hover{transform:translateY(-3px)!important}
+/* 표지 제목: 가로 2줄 */
+.cover-line{grid-area:vert;grid-column:1/-1;align-self:end;margin:auto 0 0;font:400 clamp(40px,5.6vw,92px)/1.08 var(--krd);letter-spacing:-.01em;filter:drop-shadow(.02em .03em 0 rgba(0,0,0,.4))}
+.cover-line .c1{color:var(--sky)}.cover-line .c2{color:#fff}
+.cover-in{grid-template-areas:'strap strap' 'logo logo' 'vert info' 'vert big' 'act act'}
+.cover--photo .cover-big{grid-area:big;grid-column:2}
+.cover--photo .cover-info{grid-column:2}
+/* 목차: 5×2 격자 + 손그림 */
+.spread-head{align-items:center}
+.spread-note{margin-left:auto;font:400 12px var(--kr);color:var(--muted)}
+.toc-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:2px solid var(--ink);border-left:1px solid var(--ink)}
+.toc-grid li{border-right:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.toc-grid a{display:grid;grid-template-rows:auto 1fr auto auto;gap:8px;padding:14px;min-height:240px;text-decoration:none;color:var(--ink);background:#fff;transition:background .3s var(--ease)}
+.toc-grid a:hover{background:#fff7fb}
+.toc-no{font:700 12px var(--disp);letter-spacing:.14em;color:var(--pink)}
+.toc-sketch{display:grid;place-items:center;aspect-ratio:1;max-height:140px;margin:0 auto;width:100%}
+.toc-sketch img{max-width:80%;max-height:100%;object-fit:contain;mix-blend-mode:multiply;filter:none!important}
+.toc-sketch i{display:none;font:400 64px var(--bub);color:var(--ink);opacity:.12}
+.toc-sketch.is-empty img{display:none}.toc-sketch.is-empty i{display:block}
+.toc-title{font:400 19px/1.15 var(--krd);letter-spacing:0;border-top:1px dotted rgba(0,0,0,.35);padding-top:8px}
+.toc-cat{font-size:10px;color:var(--muted)}
+/* 크레딧 블록: 1 + 6 격자, 반듯하게 */
+.credits-cover.credits-photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:8px;min-height:0;background:transparent;border:0;padding:0;aspect-ratio:4/3;overflow:visible}
+.cg-item{position:relative;display:block;overflow:hidden;background:#fff;border:1px solid var(--ink)}
+.cg-item:first-child{grid-column:1/3;grid-row:1/3}
+.cg-item img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block;filter:none!important;transition:transform .5s var(--ease)}
+.cg-item:hover img{transform:scale(1.04)}
+.cg-item b{position:absolute;left:8px;top:8px;background:#fff;border:1px solid var(--ink);border-radius:999px;padding:3px 7px;font:600 10px var(--disp);letter-spacing:.1em}
+.credit-list{list-style:none;margin:10px 0 0;padding:0;grid-column:1;border-top:2px solid var(--ink)}
+.credit-list li{display:grid;grid-template-columns:28px 1.1fr 1fr 1.2fr;gap:10px;align-items:baseline;padding:7px 0;border-bottom:1px dotted rgba(0,0,0,.35);font-size:12px}
+.credit-list span{font:700 10.5px var(--disp);letter-spacing:.12em;color:var(--pink)}
+.credit-list strong{font:600 12.5px var(--disp);letter-spacing:.02em}
+.credit-list em{font:400 12px var(--kr);font-style:normal;color:var(--ink)}
+.credit-list i{font:400 11.5px var(--kr);font-style:normal;color:var(--muted)}
+.credits-block{align-items:start}
+/* 콜라주 → 반듯한 3-사이즈 격자 */
+.collage-grid{grid-auto-rows:auto;gap:10px;align-items:stretch}
+.clip{padding:0;border:1px solid var(--ink);box-shadow:none;margin:0!important;transform:none!important}
+.clip b{left:auto;right:6px;bottom:6px;background:#fff;border:1px solid var(--ink);border-radius:999px;padding:2px 6px}
+.clip img{height:100%!important;object-fit:cover!important}
+.clip--a{grid-column:span 6;grid-row:span 2}
+.clip--b{grid-column:span 3}
+.clip--c{grid-column:span 3}
+.clip--d{grid-column:span 3}
+.clip--e{grid-column:span 3}
+.clip--f{grid-column:span 4}
+.clip--g{grid-column:span 4}
+.clip--h{grid-column:span 4}
+.clip{aspect-ratio:4/3!important}
+.clip--a{aspect-ratio:auto!important}
+.collage--sheet .clip{grid-column:span 1;aspect-ratio:4/3!important;grid-row:auto}
+/* 챕터 낙서 */
+.cat-band-in{align-items:center}
+.cat-sketch{display:block;width:clamp(90px,10vw,150px);margin-left:auto}
+.cat-sketch img{width:100%;display:block;mix-blend-mode:multiply;filter:none!important}
+.cat-sketch+.cat-count{margin-left:18px}
+/* 목차 스크랩북 섹션 여백 */
+.toc-spread .scrapbook{display:none}
+@media(max-width:900px){.cover-line{font-size:clamp(30px,8vw,48px)}.toc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.toc-grid a{min-height:0}.credits-cover.credits-grid{aspect-ratio:auto}.credit-list li{grid-template-columns:24px 1fr 1fr;font-size:11px}.credit-list i{grid-column:2/-1}.collage-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.clip--a{grid-column:span 6;grid-row:auto;aspect-ratio:16/10!important}.clip--b,.clip--c,.clip--d,.clip--e,.clip--f,.clip--g,.clip--h{grid-column:span 3}.cat-sketch{display:none}}
+/* v50 fix */
+.credits-grid{grid-template-rows:auto auto}
+.credits-grid .credits-cover.credits-photos{grid-column:1/8;grid-row:1;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;grid-template-rows:repeat(3,minmax(0,1fr))!important;min-height:0!important;padding:0!important;border:0!important;background:transparent!important;aspect-ratio:4/3;overflow:visible!important}
+.credits-grid .credit-list{grid-column:1/8;grid-row:2;margin-top:0}
+.credits-grid .credits-copy{grid-column:8/13;grid-row:1/3}
+.cover--photo .hero-actions{display:flex!important;grid-template-columns:none;justify-content:flex-start}
+.cover--photo .hero-actions .btn{width:auto;flex:0 0 auto}
+.cover-in{row-gap:6px}
+.cover-line{margin-bottom:10px}
+@media(max-width:900px){.credits-grid .credits-cover.credits-photos,.credits-grid .credit-list,.credits-grid .credits-copy{grid-column:1/-1;grid-row:auto}}

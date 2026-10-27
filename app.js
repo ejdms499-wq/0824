@@ -21,15 +21,7 @@
  const byCat=k=>projects.filter(p=>p.category===k);
 
  /* ── Hero 요약 ── */
- (function(){const el=document.getElementById('coverItems');if(!el)return;const pile=[
- ['assets/projects/styling/editorial/cha_singles_01.webp','Fashion','#cat-fashion','lg'],
- ['assets/projects/covers/puddingberry.png','Character','#cat-character','md'],
- ['assets/projects/covers/simmyo_cover_web.jpg','Interactive','#cat-interactive','md'],
- ['assets/projects/covers/data_vinyl.png','AI × Data','#cat-ai','sm'],
- ['assets/projects/styling/oliveyoung/oy_lead.jpg','Olive Young','credits.html#editorial','sm'],
- ['assets/projects/covers/gyeongseong_yarok.png','경성야록','#project-gyeong','xs'],
- ['assets/projects/styling/andteam/clip_lead.jpg','&TEAM','credits.html#stage','xs']];
- el.innerHTML=pile.map(([src,lab,href,sz],i)=>`<a class="scrap scrap--${sz}" href="${href}" style="--i:${i}"><img src="${src}" alt="" loading="eager"><span class="dotlabel">${enc(lab)}</span></a>`).join('')})();
+ (function(){const el=document.getElementById('tocGrid');if(!el)return;el.innerHTML=projects.map((p,i)=>`<li><a href="#project-${enc(p.id)}"><span class="toc-no">${String(i+1).padStart(2,'0')}</span><span class="toc-sketch"><img src="assets/sketch/${enc(p.id)}.png" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')"><i>${String(i+1).padStart(2,'0')}</i></span><span class="toc-title">${enc(p.title)}</span><span class="toc-cat dotlabel">${enc(p.categoryLabel)}</span></a></li>`).join('')})();
 const heroStatsEl=document.getElementById('heroStats');heroStatsEl.innerHTML=[[String(projects.length).padStart(2,'0'),'프로젝트'],[String(CATS.length).padStart(2,'0'),'분야'],['77','크레딧 아카이브 컷'],['∞','진행 중인 실험']].map(([n,l])=>`<li><strong>${enc(n)}</strong><span>${enc(l)}</span></li>`).join('');
 
  /* ── About ── */
@@ -68,10 +60,12 @@ const heroStatsEl=document.getElementById('heroStats');heroStatsEl.innerHTML=[[S
      <p class="proj-sub">${enc(p.subtitle||p.intro)}</p>
     </header>
     <div class="credits-grid">
-     <a class="credits-cover scrapbook scrapbook--credits" href="credits.html" aria-label="Selected Credits 전체 보기">
-      ${[['assets/projects/styling/editorial/cha_singles_cover.jpg','Singles','lg'],['assets/projects/styling/bold_01.jpg','BoldPage','md'],['assets/projects/styling/oliveyoung/oy_lead.jpg','Olive Young','md'],['assets/projects/styling/editorial/ha_vogue_lead.jpg','VOGUE','sm'],['assets/projects/styling/koo_bb_lead.jpg','Brooks Brothers','sm'],['assets/projects/styling/editorial/shin_bazaar_lead.jpg','BAZAAR','xs'],['assets/projects/styling/andteam/stage1_lead.jpg','&TEAM','xs']].map(([src,lab,sz])=>`<span class="scrap scrap--${sz}"><img src="${src}" alt="" loading="lazy"><span class="dotlabel">${enc(lab)}</span></span>`).join('')}
-      <span class="cc-stamp"><b>Selected</b><b>Credits</b><i>→ 전체 보기</i></span>
-     </a>
+     <div class="credits-cover credits-photos">
+      ${[['assets/projects/styling/editorial/cha_singles_cover.jpg','Singles','차준환 · 커버'],['assets/projects/styling/bold_01.jpg','BoldPage','강유석 · 커버'],['assets/projects/styling/oliveyoung/oy_lead.jpg','Olive Young','매거진 화보'],['assets/projects/styling/editorial/ha_vogue_lead.jpg','VOGUE','하정우 · 화보'],['assets/projects/styling/koo_bb_lead.jpg','Brooks Brothers','구교환 · 캠페인'],['assets/projects/styling/editorial/shin_bazaar_lead.jpg','BAZAAR','신승호 · 화보']].map(([src,lab,who],i)=>`<a class="cg-item" href="credits.html"><img src="${src}" alt="" loading="lazy"><b>${String(i+1).padStart(2,'0')}</b></a>`).join('')}
+     </div>
+     <ol class="credit-list">
+      ${[['Singles','차준환','커버 · 스타일링 팀 참여'],['BoldPage','강유석','커버 · 비하인드'],['Olive Young Magazine','브랜드 화보','스타일링 팀 참여'],['VOGUE','하정우','에디토리얼'],['Brooks Brothers','구교환','캠페인'],["Harper's BAZAAR",'신승호','에디토리얼'],['&TEAM · Bewitched','무대 · 라이브 클립','의상 준비 참여']].map(([m,w,r],i)=>`<li><span>${String(i+1).padStart(2,'0')}</span><strong>${enc(m)}</strong><em>${enc(w)}</em><i>${enc(r)}</i></li>`).join('')}
+     </ol>
      <div class="credits-copy">
       <p class="credits-statement">${enc(pro.statement||'')}</p>
       <dl class="facts facts--inline">
@@ -131,7 +125,7 @@ const heroStatsEl=document.getElementById('heroStats');heroStatsEl.innerHTML=[[S
  document.getElementById('projectBlocks').innerHTML=CATS.map(c=>{
   const list=byCat(c.key);if(!list.length)return '';
   const blocks=list.map(p=>{const pro=PRO[p.id]||{};if(p.id==='fashion')return creditsBlock(p,pro);const html=projectBlock(p,pro,flip);flip=!flip;return html;}).join('');
-  return `<div class="cat" id="cat-${c.key}"><header class="cat-band"><div class="wrap cat-band-in"><span class="cat-no">${c.no}</span><div class="cat-band-txt"><h2><span class="kr">${enc(c.ko)}</span></h2><em>${enc(c.en)}</em><p>${enc(c.lead)}</p></div><span class="cat-count"><b>Chapter ${c.no}</b> · ${String(list.length).padStart(2,'0')} ${list.length>1?'projects':'project'}</span></div></header>${blocks}</div>`;
+  return `<div class="cat" id="cat-${c.key}"><header class="cat-band"><div class="wrap cat-band-in"><span class="cat-no">${c.no}</span><div class="cat-band-txt"><h2><span class="kr">${enc(c.ko)}</span></h2><em>${enc(c.en)}</em><p>${enc(c.lead)}</p></div><span class="cat-sketch"><img src="assets/sketch/ch${c.no}.png" alt="" loading="lazy" onerror="this.parentElement.remove()"></span><span class="cat-count"><b>Chapter ${c.no}</b> · ${String(list.length).padStart(2,'0')} ${list.length>1?'projects':'project'}</span></div></header>${blocks}</div>`;
  }).join('');
 
 

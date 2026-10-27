@@ -1070,3 +1070,13 @@ h2.contact-title.bubble span{color:var(--sky);-webkit-text-fill-color:var(--sky)
 .cover-in{row-gap:6px}
 .cover-line{margin-bottom:10px}
 @media(max-width:900px){.credits-grid .credits-cover.credits-photos,.credits-grid .credit-list,.credits-grid .credits-copy{grid-column:1/-1;grid-row:auto}}
+/* v51 — 손그림 들어옴: 챕터 낙서 크기/위치, 목차 아이콘 여백 */
+.toc-sketch{max-height:150px;padding:6px}
+.toc-sketch img{max-width:86%;max-height:100%;mix-blend-mode:multiply}
+.cat-sketch{width:clamp(110px,12vw,170px);margin:0 0 0 auto;align-self:end}
+.cat-band-in{grid-template-columns:auto 1fr auto auto}
+#cat-character .cat-sketch{width:clamp(180px,22vw,320px)}
+.toc-grid a{grid-template-rows:auto 150px auto auto;min-height:0}
+.toc-sketch{height:150px;max-height:none;aspect-ratio:auto;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.toc-sketch img{width:auto;height:100%;max-width:92%;max-height:100%;object-fit:contain}
+@media(max-width:900px){.toc-grid a{grid-template-rows:auto 110px auto auto}.toc-sketch{height:110px}}

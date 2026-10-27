@@ -1491,3 +1491,19 @@ html{font-size:84%}
  .deck--mini{order:9}
  .proj-links{order:8}
 }
+/* ═══ v63 — 숫자·단계 제거, INSIGHT는 제목 옆, 이미지는 오른쪽 칼럼 높이만큼 ═══ */
+.proj-head{grid-template-columns:auto 1fr;grid-template-areas:'meta meta' 'title title' 'sub sub' 'ins ins';align-items:end;gap:6px 18px;max-width:none}
+.insight--head{grid-area:ins;margin:8px 0 0;padding:10px 14px;border-left:8px solid var(--c,var(--pink));border-radius:4px;background:#fff;display:flex;gap:14px;align-items:center}
+.insight--head span{flex:0 0 auto}
+.insight--head p{margin:0;font-size:clamp(14px,1.2vw,17px)}
+@media(min-width:901px){
+ .proj-head{grid-template-columns:minmax(0,7fr) minmax(0,5fr);grid-template-areas:'meta meta' 'title ins' 'sub ins';align-items:end}
+ .insight--head{align-self:end;margin:0}
+ .proj-grid{align-items:stretch!important}
+ .proj-hero{display:flex;flex-direction:column;align-self:stretch}
+ .proj-hero-frame{flex:1 1 auto;min-height:0;aspect-ratio:auto!important;max-height:none!important}
+ .proj-hero-frame .thumb{height:100%!important;aspect-ratio:auto!important;display:block}
+ .proj-hero-frame img{height:100%!important;width:100%!important;object-fit:cover!important}
+ .proj-hero figcaption{flex:0 0 auto}
+}
+@media(min-width:901px){.proj-hero-frame img{object-position:50% 50%}}

@@ -1423,3 +1423,4 @@ h2.contact-title.bubble .reg{color:var(--ink)}
  .pager i{font-style:normal;color:var(--muted);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500;letter-spacing:.02em;font-family:var(--kr)}
 }
 @media(min-width:901px){.cat,.proj,.contact,.about,.toc-spread{margin:0!important}.pg{margin:0!important}.proj.pg .wrap{padding-bottom:48px}.pager{bottom:10px}.deck-strip .slide{width:clamp(200px,16vw,260px)!important}}
+@media(min-width:901px){.toc-grid{grid-template-rows:repeat(2,minmax(0,1fr))}.toc-grid a{grid-template-rows:auto minmax(0,1fr) auto auto;overflow:hidden}.toc-sketch{min-height:0;height:100%!important;display:flex;align-items:center;justify-content:center}.toc-sketch img{max-height:100%;max-width:70%}.about-focus{grid-template-columns:repeat(2,1fr)}}

@@ -13,16 +13,18 @@
 
  /* 카테고리 순서와 라벨 */
  const CATS=[
-  {key:'fashion',no:'01',ko:'패션 · 스타일링',en:'Fashion & Styling',lead:'옷보다 먼저 배운 건, 한 프레임에서 뭐가 먼저 읽히는가.'},
-  {key:'character',no:'02',ko:'캐릭터 · 세계관',en:'Character & World',lead:'성격부터 정하고 생김새는 나중에. 그래야 오래 갑니다.'},
-  {key:'interactive',no:'03',ko:'인터랙티브 웹',en:'Interactive Web',lead:'읽는 걸 만지게. 빵집, 1930년 경성, 고양이 한 마리, 그리고 음악.'},
-  {key:'ai',no:'04',ko:'AI · 데이터',en:'AI × Data',lead:'숫자는 차갑지만, 손에 쥐면 이야기가 됩니다.'}
+  {key:'history',no:'01',ko:'역사 · 세계관 콘텐츠',en:'History & Worldbuilding',lead:'1930년 경성을 손끝으로 펼치고, 고양이 한 마리를 따라 걷는다.'},
+  {key:'ip',no:'02',ko:'캐릭터 IP',en:'Character IP',lead:'성격부터 정하고 생김새는 나중에. 그래야 오래 갑니다.'},
+  {key:'aiservice',no:'03',ko:'AI 서비스 기획',en:'AI Service Design',lead:'하지 않게 만드는 설계가 제일 어렵습니다.'},
+  {key:'data',no:'04',ko:'데이터 스토리텔링',en:'Data Storytelling',lead:'숫자는 차갑지만, 손에 쥐면 이야기가 됩니다.'},
+  {key:'fashion',no:'05',ko:'패션 · 스타일링',en:'Fashion & Styling',lead:'옷보다 먼저 배운 건, 한 프레임에서 뭐가 먼저 읽히는가.'}
  ];
+
  const byCat=k=>projects.filter(p=>p.category===k);
 
  /* ── Hero 요약 ── */
  (function(){const el=document.getElementById('tocGrid');if(!el)return;el.innerHTML=projects.map((p,i)=>`<li><a href="#project-${enc(p.id)}"><span class="toc-no">${String(i+1).padStart(2,'0')}</span><span class="toc-sketch"><img src="assets/sketch/${enc(p.id)}.png" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')"><i>${String(i+1).padStart(2,'0')}</i></span><span class="toc-title">${enc(p.title)}</span><span class="toc-cat dotlabel">${enc(p.categoryLabel)}</span></a></li>`).join('')})();
-const heroStatsEl=document.getElementById('heroStats');heroStatsEl.innerHTML=[[String(projects.length).padStart(2,'0'),'프로젝트'],[String(CATS.length).padStart(2,'0'),'분야'],['77','크레딧 아카이브 컷'],['∞','진행 중인 실험']].map(([n,l])=>`<li><strong>${enc(n)}</strong><span>${enc(l)}</span></li>`).join('');
+const heroStatsEl=document.getElementById('heroStats');heroStatsEl.innerHTML=[[String(projects.length).padStart(2,'0'),'프로젝트'],[String(CATS.length).padStart(2,'0'),'카테고리'],['77','크레딧 아카이브 컷'],['∞','진행 중인 실험']].map(([n,l])=>`<li><strong>${enc(n)}</strong><span>${enc(l)}</span></li>`).join('');
 
  /* ── About ── */
  document.getElementById('aboutGrid').innerHTML=`

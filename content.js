@@ -85,7 +85,7 @@ window.SOY_PRO = {
     context:'열린 아카이브 · 진행 중',
     tools:['Midjourney','프롬프트 실험','UI 프로토타이핑','데이터 분석'],
     stats:[['04','실험 노트 표지'],['∞','진행 중']],
-    insight:'되는 것과 배운 것을 따로 적어 두면, 망한 실험도 포트폴리오가 됩니다. (꽤 많습니다.)',
+    insight:'되는 것과 배운 것을 따로 적어 둡니다. 실험 노트는 그래서 늘 두 칸입니다.',
     galleryLabel:'책상 위 — 실험 노트의 네 장면'
   }
 };
@@ -103,6 +103,6 @@ window.SOY_ABOUT = {
     ['브랜드 · VMD','도호 (여성복) · 매장 관리자 → VMD','오프라인 부진 시기 온라인 전환을 맡아 상품 촬영 · 업로드 · 운영, 매출 상승']
   ],
   education:[['패션디자인 전공 (2년제) 졸업','졸업 패션쇼 · 졸업 논문 발표']],
-  tools:['Midjourney','n8n','Supabase','OpenAI API','Lovable','Claude Code','HTML / CSS / JS','React','Python (데이터 분석)','Notion'],
+  toolGroups:[['AI · 이미지',['Midjourney','ChatGPT','Claude Code','OpenAI API','GPT-4o','RAG','YOLO']],['자동화 · 백엔드',['n8n','Supabase','FastAPI','MySQL','Browser Use','Lovable']],['웹 · 배포',['HTML / CSS / JS','React','GitHub Pages','Netlify','Playwright']],['데이터 · 기획',['Python','pandas','Notion','PPT 기획서','데이터 시각화']]],tools:['Midjourney','ChatGPT','Claude Code','n8n','Supabase','OpenAI API','FastAPI','MySQL','YOLO','Browser Use','Lovable','HTML / CSS / JS','React','GitHub Pages','Netlify','Python','pandas','Notion'],
   contact:[{label:'GitHub',url:'https://github.com/ejdms499-wq'},{label:'ejdms499@naver.com',url:'mailto:ejdms499@naver.com'}]
 };

@@ -479,3 +479,8 @@ h1.cr-title.bubble{-webkit-text-fill-color:currentColor!important;background:non
 h1.cr-title.bubble span{-webkit-text-fill-color:var(--sky)!important;background:none!important;color:var(--sky)}
 .cr-bar-title strong{-webkit-text-fill-color:var(--pink)!important;background:none!important;filter:url(#balloon) drop-shadow(.04em .06em 0 var(--pink2))}
 .cr-person-no{filter:url(#balloon)}
+
+.is-gloss{filter:none!important;-webkit-text-fill-color:initial!important;background:none!important;line-height:0}
+.is-gloss .gloss-svg{display:block;max-width:100%;height:auto;overflow:visible}
+h1.cr-title.bubble{--shadow:#b81f58}
+h1.cr-title.bubble span{color:var(--sky)}

@@ -209,3 +209,40 @@
   document.querySelectorAll('.cr-series,.cr-drama,.cr-stage,.cr-section-head').forEach(el=>{el.classList.add('will-in');io.observe(el);});
  }
 })();
+
+/* ── 풍선 광택: 큰 제목을 인라인 SVG 텍스트로 (필터가 확실히 먹음) ── */
+(async function(){
+  try{await document.fonts.load('400 100px "Bagel Fat One"');await document.fonts.ready;}catch(e){}
+  const FILT=`<defs><filter id="bl" x="-10%" y="-25%" width="120%" height="160%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceAlpha" stdDeviation="7" result="b"/><feSpecularLighting in="b" surfaceScale="12" specularConstant="1.2" specularExponent="26" lighting-color="#fff" result="s"><fePointLight x="-600" y="-1400" z="700"/></feSpecularLighting><feComposite in="s" in2="SourceAlpha" operator="in" result="si"/><feGaussianBlur in="si" stdDeviation="1.5" result="ss"/><feComposite in="ss" in2="SourceGraphic" operator="over"/></filter></defs>`;
+  const cv=document.createElement('canvas').getContext('2d');
+  const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  function build(el){
+    const cs=getComputedStyle(el);const fs=parseFloat(cs.fontSize);const fam='"Bagel Fat One","Fredoka",sans-serif';
+    cv.font=`400 ${fs}px ${fam}`;
+    const lines=[];let cur=[];const push=()=>{if(cur.length){lines.push(cur);cur=[]}};
+    [...el.childNodes].forEach(n=>{
+      if(n.nodeName==='BR'){push();return}
+      const txt=(n.textContent||'').replace(/\s+/g,' ').trim();if(!txt)return;
+      if(n.nodeType===3){cur.push({t:txt,c:cs.color});return}
+      const ncs=getComputedStyle(n);if(ncs.display==='none')return;const blk=ncs.display==='block';
+      if(blk)push();
+      // nested (e.g. span > i.reg)
+      if(n.children.length){[...n.childNodes].forEach(m=>{const t=(m.textContent||'').trim();if(!t)return;if(m.nodeType===1&&getComputedStyle(m).display==='none')return;cur.push({t,c:m.nodeType===1?getComputedStyle(m).color:ncs.color,tight:m.nodeType===1})})}
+      else cur.push({t:txt,c:ncs.color});
+      if(blk)push();
+    });
+    push();if(!lines.length)return;
+    const lh=fs*.92;let W=0;
+    const mw=t=>cv.measureText(t).width;
+    lines.forEach(l=>{let w=0;l.forEach((s,i)=>{w+=mw(s.t)+(i<l.length-1&&!l[i+1].tight&&l[i+1].t.length>1?fs*.22:0)});W=Math.max(W,w)});
+    const H=lh*(lines.length-1)+fs*1.05;
+    const shadow=cs.getPropertyValue('--shadow').trim()||'#b81f58';
+    let y=fs*.84,out='';
+    lines.forEach(l=>{let x=0;l.forEach((s,i)=>{const w=mw(s.t);out+=`<text x="${x.toFixed(1)}" y="${(y+fs*.055).toFixed(1)}" fill="${shadow}" font-family='${fam}' font-size="${fs}">${esc(s.t)}</text>`;x+=w+(i<l.length-1&&!l[i+1].tight&&l[i+1].t.length>1?fs*.22:0)});
+      x=0;l.forEach((s,i)=>{const w=mw(s.t);out+=`<text x="${(x+fs*.02).toFixed(1)}" y="${y.toFixed(1)}" fill="${s.c}" font-family='${fam}' font-size="${fs}" filter="url(#bl)">${esc(s.t)}</text>`;x+=w+(i<l.length-1&&!l[i+1].tight&&l[i+1].t.length>1?fs*.22:0)});y+=lh});
+    const label=el.getAttribute('aria-label')||el.textContent.trim();
+    el.innerHTML=`<svg class="gloss-svg" viewBox="0 0 ${Math.ceil(W+fs*.1)} ${Math.ceil(H)}" width="${Math.ceil(W+fs*.1)}" height="${Math.ceil(H)}" role="img" aria-label="${esc(label)}">${FILT}${out}</svg>`;
+    el.classList.add('is-gloss');
+  }
+  document.querySelectorAll('h1.bubble, h2.contact-title.bubble, h1.cr-title.bubble').forEach(build);
+})();

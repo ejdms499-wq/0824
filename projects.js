@@ -92,7 +92,7 @@ window.SOY_PROJECTS = [
     tags:['음악 데이터','턴테이블','인터랙티브 웹'],note:'표지는 사용자가 제공한 DATA VINYL 대표 이미지입니다. 실제 기능은 사이트 및 기획 자료를 참고하세요.',links:[{label:"Live",url:"https://ejdms499-wq.github.io/DATA_VINYL/",kind:"site"},{label:"기획 노트 · Notion",url:"https://app.notion.com/p/DATA-VINYL-40592c0c250981cdb997fa7b1adba019",kind:"resource"}]
   },
   {
-    id:'research',image:'assets/projects/research/research_cover.jpg',imageAlt:'투명 종이와 실험 자료를 겹쳐 배열한 실험노트 콘셉트 이미지',imageCredit:'사용자 제공 Midjourney 실험노트 표지',gallery:['assets/projects/research/research_01.jpg','assets/projects/research/research_02.jpg','assets/projects/research/research_03.jpg','assets/projects/research/research_04.jpg'],number:'10',title:'실험 노트',subtitle:'망한 실험까지 전부 적어 두는 노트.',category:'ai',categoryLabel:'AI · 데이터',size:'small',art:'research',year:'진행 중인 제작 기록',
+    id:'research',image:'assets/projects/research/research_cover.jpg',imageAlt:'투명 종이와 실험 자료를 겹쳐 배열한 실험노트 콘셉트 이미지',imageCredit:'사용자 제공 Midjourney 실험노트 표지',gallery:['assets/projects/research/research_01.jpg','assets/projects/research/research_02.jpg','assets/projects/research/research_03.jpg','assets/projects/research/research_04.jpg'],number:'10',title:'실험 노트',subtitle:'아이디어가 프로토타입이 되기까지, 전부 적어 두는 노트.',category:'ai',categoryLabel:'AI · 데이터',size:'small',art:'research',year:'진행 중인 제작 기록',
     intro:'생각을 움직이는 프로토타입으로 만드는 과정.',
     description:'데이터 분석, AI 보조 제작, 프롬프트 반복, UI 프로토타이핑 등 여러 실험과 제작 과정을 기록하는 열린 아카이브.',
     role:'리서치 · 프로토타이핑 · 비주얼 개발',

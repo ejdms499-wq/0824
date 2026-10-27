@@ -27,7 +27,7 @@ const heroStatsEl=document.getElementById('heroStats');heroStatsEl.innerHTML=[[S
  /* ── About ── */
  document.getElementById('aboutGrid').innerHTML=`
   <div class="about-main">
-   <figure class="about-portrait"><div class="about-portrait-frame"><img src="assets/about/portrait.jpg" alt="김소이" onerror="this.parentElement.classList.add('is-empty')"></div><figcaption><span>Kim Soy</span><span>Seoul</span></figcaption></figure>
+   <figure class="about-portrait about-portrait--sloth"><div class="about-portrait-frame"><img src="assets/cover/cover_alt_tree.jpg" alt="" ></div><img class="about-doodle" src="assets/sketch/sloth.png" alt="" loading="lazy" onerror="this.remove()"><figcaption><span>Kim Soy</span><span>느리지만 끝까지 갑니다</span></figcaption></figure>
    <p class="about-tagline">${enc(ABOUT.tagline)}</p>
    <p class="about-mission">${enc(ABOUT.mission)}</p>
    <ul class="about-focus">${(ABOUT.focus||[]).map((f,i)=>`<li><span>0${i+1}</span>${enc(f)}</li>`).join('')}</ul>
@@ -35,7 +35,7 @@ const heroStatsEl=document.getElementById('heroStats');heroStatsEl.innerHTML=[[S
   <div class="about-side">
    <div class="about-block"><h3>Experience</h3><ol class="timeline">${(ABOUT.experience||[]).map(([y,t,d])=>`<li><span class="tl-year">${enc(y)}</span><div><strong>${enc(t)}</strong><p>${enc(d)}</p></div></li>`).join('')}</ol></div>
    <div class="about-block"><h3>Education</h3><ul class="plain">${(ABOUT.education||[]).map(([t,d])=>`<li><strong>${enc(t)}</strong><p>${enc(d)}</p></li>`).join('')}</ul></div>
-   <div class="about-block"><h3>Skills &amp; Tools</h3><ul class="chips">${(ABOUT.tools||[]).map(t=>`<li>${enc(t)}</li>`).join('')}</ul></div>
+   <div class="about-block about-block--tools"><h3>Skills &amp; Tools</h3>${(ABOUT.toolGroups||[]).map(([g,ts])=>`<div class="tool-group"><span class="tool-group-name">${enc(g)}</span><ul class="chips">${ts.map(t=>`<li>${enc(t)}</li>`).join('')}</ul></div>`).join('')}</div>
   </div>`;
 
  /* ── 프로젝트 목차 (카테고리별) ── */
@@ -84,7 +84,7 @@ const heroStatsEl=document.getElementById('heroStats');heroStatsEl.innerHTML=[[S
     </div>
     <div class="process">
      <div class="process-head"><span class="sec-no">What I do — 06 steps</span><h3>한 컷이 완성되기까지, <em>내가 하는 여섯 가지 일</em></h3></div>
-     <ol class="howto">${(pro.process||[]).map((s,i)=>`<li><span class="ht-no">${enc(s.no)}</span><span class="ht-en dotlabel">${enc(s.en)}</span><strong class="ht-ko">${enc(s.title)}</strong><p>${enc(s.desc)}</p></li>`).join('')}</ol>
+     <ol class="howto">${(pro.process||[]).map((s,i)=>`<li><span class="ht-no">${enc(s.no)}</span><img class="ht-doodle" src="assets/sketch/step_${enc(s.no)}.png" alt="" loading="lazy" onerror="this.remove()"><span class="ht-en dotlabel">${enc(s.en)}</span><strong class="ht-ko">${enc(s.title)}</strong><p>${enc(s.desc)}</p></li>`).join('')}</ol>
 
     </div>
     ${pro.insight?`<blockquote class="insight"><span>INSIGHT</span><p>${enc(pro.insight)}</p></blockquote>`:''}
@@ -179,4 +179,42 @@ const heroStatsEl=document.getElementById('heroStats');heroStatsEl.innerHTML=[[S
   const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('is-in');io.unobserve(en.target);}}),{rootMargin:'0px 0px -6% 0px',threshold:.06});
   document.querySelectorAll('.proj-head,.proj-grid,.credits-grid,.process,.proj-main,.about-grid,.pindex-list,.sec-head,.cat-head').forEach(el=>{el.classList.add('will-in');io.observe(el);});
  }
+})();
+
+
+/* ── 풍선 광택: 큰 제목을 인라인 SVG 텍스트로 (필터가 확실히 먹음) ── */
+(async function(){
+  try{await document.fonts.load('400 100px "Bagel Fat One"');await document.fonts.ready;}catch(e){}
+  const FILT=`<defs><filter id="bl" x="-10%" y="-25%" width="120%" height="160%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceAlpha" stdDeviation="7" result="b"/><feSpecularLighting in="b" surfaceScale="12" specularConstant="1.2" specularExponent="26" lighting-color="#fff" result="s"><fePointLight x="-600" y="-1400" z="700"/></feSpecularLighting><feComposite in="s" in2="SourceAlpha" operator="in" result="si"/><feGaussianBlur in="si" stdDeviation="1.5" result="ss"/><feComposite in="ss" in2="SourceGraphic" operator="over"/></filter></defs>`;
+  const cv=document.createElement('canvas').getContext('2d');
+  const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  function build(el){
+    const cs=getComputedStyle(el);const fs=parseFloat(cs.fontSize);const fam='"Bagel Fat One","Fredoka",sans-serif';
+    cv.font=`400 ${fs}px ${fam}`;
+    const lines=[];let cur=[];const push=()=>{if(cur.length){lines.push(cur);cur=[]}};
+    [...el.childNodes].forEach(n=>{
+      if(n.nodeName==='BR'){push();return}
+      const txt=(n.textContent||'').replace(/\s+/g,' ').trim();if(!txt)return;
+      if(n.nodeType===3){cur.push({t:txt,c:cs.color});return}
+      const ncs=getComputedStyle(n);if(ncs.display==='none')return;const blk=ncs.display==='block';
+      if(blk)push();
+      // nested (e.g. span > i.reg)
+      if(n.children.length){[...n.childNodes].forEach(m=>{const t=(m.textContent||'').trim();if(!t)return;if(m.nodeType===1&&getComputedStyle(m).display==='none')return;cur.push({t,c:m.nodeType===1?getComputedStyle(m).color:ncs.color,tight:m.nodeType===1})})}
+      else cur.push({t:txt,c:ncs.color});
+      if(blk)push();
+    });
+    push();if(!lines.length)return;
+    const lh=fs*.92;let W=0;
+    const mw=t=>cv.measureText(t).width;
+    lines.forEach(l=>{let w=0;l.forEach((s,i)=>{w+=mw(s.t)+(i<l.length-1&&!l[i+1].tight&&l[i+1].t.length>1?fs*.22:0)});W=Math.max(W,w)});
+    const H=lh*(lines.length-1)+fs*1.05;
+    const shadow=cs.getPropertyValue('--shadow').trim()||'#b81f58';
+    let y=fs*.84,out='';
+    lines.forEach(l=>{let x=0;l.forEach((s,i)=>{const w=mw(s.t);out+=`<text x="${x.toFixed(1)}" y="${(y+fs*.055).toFixed(1)}" fill="${shadow}" font-family='${fam}' font-size="${fs}">${esc(s.t)}</text>`;x+=w+(i<l.length-1&&!l[i+1].tight&&l[i+1].t.length>1?fs*.22:0)});
+      x=0;l.forEach((s,i)=>{const w=mw(s.t);out+=`<text x="${(x+fs*.02).toFixed(1)}" y="${y.toFixed(1)}" fill="${s.c}" font-family='${fam}' font-size="${fs}" filter="url(#bl)">${esc(s.t)}</text>`;x+=w+(i<l.length-1&&!l[i+1].tight&&l[i+1].t.length>1?fs*.22:0)});y+=lh});
+    const label=el.getAttribute('aria-label')||el.textContent.trim();
+    el.innerHTML=`<svg class="gloss-svg" viewBox="0 0 ${Math.ceil(W+fs*.1)} ${Math.ceil(H)}" width="${Math.ceil(W+fs*.1)}" height="${Math.ceil(H)}" role="img" aria-label="${esc(label)}">${FILT}${out}</svg>`;
+    el.classList.add('is-gloss');
+  }
+  document.querySelectorAll('h1.bubble, h2.contact-title.bubble, h1.cr-title.bubble').forEach(build);
 })();
